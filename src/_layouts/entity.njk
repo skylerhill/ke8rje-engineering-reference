@@ -1,0 +1,49 @@
+---
+layout: base.njk
+---
+
+<h1>{{ title }}</h1>
+
+<p><strong>Entity:</strong> {{ entity }}</p>
+
+<p><strong>Location:</strong> {{ location }}</p>
+
+<p><strong>Dates:</strong> {{ start }} – {{ end }}</p>
+
+<hr>
+
+{{ content | safe }}
+
+<hr>
+
+<h2>Projects</h2>
+
+<ul>
+{% for project in projects %}
+    <li>{{ project }}</li>
+{% endfor %}
+</ul>
+
+<h2>Competencies</h2>
+
+<ul>
+{% for competency in competencies %}
+    <li>{{ competency }}</li>
+{% endfor %}
+</ul>
+
+<h2>Software</h2>
+
+<ul>
+{% for item in software %}
+    <li>{{ item }}</li>
+{% endfor %}
+</ul>
+
+<h2>Standards</h2>
+
+<ul>
+{% for standard in standards %}
+    <li>{{ standard }}</li>
+{% endfor %}
+</ul>
