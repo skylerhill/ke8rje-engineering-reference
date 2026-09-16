@@ -29,13 +29,22 @@ layout: base.njk
 </ul>
 {% endif %}
 
-{% if competencies %}
+{% if competencies and collections.competencies %}
+
 <h2>Competencies</h2>
+
 <ul>
-{% for competency in competencies %}
-    <li>{{ competency }}</li>
+{% for competencyId in competencies %}
+    {% for competency in collections.competencies %}
+        {% if competency.data.id == competencyId %}
+            <li>
+                <a href="{{ competency.url }}">{{ competency.data.title }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
 {% endfor %}
 </ul>
+
 {% endif %}
 
 {% if software %}
@@ -79,6 +88,22 @@ layout: base.njk
 <ul>
 {% for project in collections.projects %}
     {% if project.data.position == id %}
+        <li>
+            <a href="{{ project.url }}">{{ project.data.title }}</a>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+{% endif %}
+
+{% if entity == "competency" and collections.projects %}
+
+<h2>Used In Projects</h2>
+
+<ul>
+{% for project in collections.projects %}
+    {% if project.data.competencies and id in project.data.competencies %}
         <li>
             <a href="{{ project.url }}">{{ project.data.title }}</a>
         </li>

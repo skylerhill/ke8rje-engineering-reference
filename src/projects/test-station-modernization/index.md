@@ -7,6 +7,9 @@ id: test-station-modernization
 entity: project
 
 position: boeing-systems-engineer
+
+competencies:
+  - systems-engineering
 ---
 
 Modernization of legacy automated test equipment.
