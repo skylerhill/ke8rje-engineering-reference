@@ -5,6 +5,8 @@ permalink: /employers/zane-state-college/
 
 entity: employer
 
+id: zane-state-college
+
 location: Zanesville, Ohio
 
 positions:

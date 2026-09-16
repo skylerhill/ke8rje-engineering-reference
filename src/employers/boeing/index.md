@@ -5,6 +5,8 @@ permalink: /employers/boeing/
 
 entity: employer
 
+id: boeing
+
 industry: Aerospace & Defense
 
 location: Heath, Ohio

@@ -55,3 +55,19 @@ layout: base.njk
 {% endfor %}
 </ul>
 {% endif %}
+
+{% if entity == "employer" and collections.positions %}
+
+<h2>Positions</h2>
+
+<ul>
+{% for position in collections.positions %}
+    {% if position.data.employer == id %}
+        <li>
+            <a href="{{ position.url }}">{{ position.data.title }}</a>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+{% endif %}
