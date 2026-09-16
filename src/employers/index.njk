@@ -1,0 +1,23 @@
+---
+title: Employment
+layout: listing.njk
+permalink: /employers/
+eleventyExcludeFromCollections: true
+---
+
+<h1>Employment</h1>
+
+<p>Professional engineering experience and employment history.</p>
+
+{% if collections.employers %}
+<ul>
+{% for employer in collections.employers %}
+    <li>
+        <a href="{{ employer.url }}">{{ employer.data.title }}</a>
+        {% if employer.data.location %}
+            — {{ employer.data.location }}
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% endif %}
