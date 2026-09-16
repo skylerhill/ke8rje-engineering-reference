@@ -1,0 +1,20 @@
+---
+title: Projects
+layout: listing.njk
+permalink: /projects/
+eleventyExcludeFromCollections: true
+---
+
+<h1>Projects</h1>
+
+<p>Engineering projects and technical work.</p>
+
+{% if collections.projects %}
+<ul>
+{% for project in collections.projects %}
+    <li>
+        <a href="{{ project.url }}">{{ project.data.title }}</a>
+    </li>
+{% endfor %}
+</ul>
+{% endif %}

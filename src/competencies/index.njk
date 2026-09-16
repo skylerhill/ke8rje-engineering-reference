@@ -1,0 +1,20 @@
+---
+title: Competencies
+layout: listing.njk
+permalink: /competencies/
+eleventyExcludeFromCollections: true
+---
+
+<h1>Competencies</h1>
+
+<p>Engineering disciplines, technical capabilities, and areas of expertise.</p>
+
+{% if collections.competencies %}
+<ul>
+{% for competency in collections.competencies %}
+    <li>
+        <a href="{{ competency.url }}">{{ competency.data.title }}</a>
+    </li>
+{% endfor %}
+</ul>
+{% endif %}
