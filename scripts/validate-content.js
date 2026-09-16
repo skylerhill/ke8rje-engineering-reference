@@ -4,40 +4,67 @@ const path = require("node:path");
 /*
  * Engineering Reference Content Validator
  *
- * Checks canonical Markdown content for structural and relationship errors.
+ * Validates the canonical Markdown content used by the Eleventy site.
  *
- * Current checks:
- *   - Missing index.md files
- *   - Missing required front-matter fields
- *   - Folder ID / front-matter ID mismatches
- *   - Duplicate entity IDs
- *   - Positions referencing nonexistent employers
- *   - Projects referencing nonexistent positions
- *   - Projects referencing nonexistent competencies
+ * The validator checks both structural correctness and relationships
+ * between entities. Relationships use stable IDs rather than display
+ * names so titles can change without breaking the site's data graph.
  */
 
-const SRC_DIRECTORY = path.join(process.cwd(), "src");
 
-const COLLECTIONS = [
-    "employers",
-    "positions",
-    "projects",
-    "competencies"
+/* -------------------------------------------------------------------------- */
+/* Configuration                                                              */
+/* -------------------------------------------------------------------------- */
+
+const SRC_DIRECTORY = path.join(
+    process.cwd(),
+    "src"
+);
+
+/*
+ * Each collection defines the singular entity value expected in the
+ * front matter of files stored in that collection.
+ */
+const COLLECTIONS = {
+    employers: "employer",
+    positions: "position",
+    projects: "project",
+    competencies: "competency",
+    institutions: "institution",
+    credentials: "credential",
+    coursework: "course",
+    software: "software",
+    standards: "standard",
+    certifications: "certification",
+    publications: "publication"
+};
+
+const REQUIRED_FIELDS = [
+    "title",
+    "layout",
+    "permalink",
+    "id",
+    "entity"
 ];
 
 
 /* -------------------------------------------------------------------------- */
-/* Utilities                                                                  */
+/* File Utilities                                                             */
 /* -------------------------------------------------------------------------- */
 
 async function getDirectories(directory) {
     try {
-        const entries = await fs.readdir(directory, {
-            withFileTypes: true
-        });
+        const entries = await fs.readdir(
+            directory,
+            {
+                withFileTypes: true
+            }
+        );
 
         return entries
-            .filter((entry) => entry.isDirectory())
+            .filter((entry) =>
+                entry.isDirectory()
+            )
             .map((entry) => entry.name)
             .sort();
     } catch (error) {
@@ -50,8 +77,31 @@ async function getDirectories(directory) {
 }
 
 
+/* -------------------------------------------------------------------------- */
+/* Front Matter Parser                                                        */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * The project currently uses deliberately simple YAML front matter.
+ *
+ * Rather than introducing another dependency, this parser supports the
+ * structures currently used by the site:
+ *
+ *     field: value
+ *
+ * and:
+ *
+ *     field:
+ *       - value
+ *       - value
+ *
+ * If the content model later requires nested YAML objects, this parser
+ * should be replaced with a dedicated YAML parser.
+ */
 function parseFrontMatter(content) {
-    const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    const match = content.match(
+        /^---\r?\n([\s\S]*?)\r?\n---/
+    );
 
     if (!match) {
         return null;
@@ -63,7 +113,9 @@ function parseFrontMatter(content) {
     let currentList = null;
 
     for (const line of lines) {
-        const listMatch = line.match(/^\s+-\s+(.+)$/);
+        const listMatch = line.match(
+            /^\s+-\s+(.+)$/
+        );
 
         if (listMatch && currentList) {
             data[currentList].push(
@@ -81,7 +133,9 @@ function parseFrontMatter(content) {
             continue;
         }
 
-        const [, key, rawValue] = fieldMatch;
+        const [, key, rawValue] =
+            fieldMatch;
+
         const value = rawValue.trim();
 
         if (value === "") {
@@ -96,6 +150,10 @@ function parseFrontMatter(content) {
     return data;
 }
 
+
+/* -------------------------------------------------------------------------- */
+/* Content Loading                                                            */
+/* -------------------------------------------------------------------------- */
 
 async function loadCollection(collection) {
     const directory = path.join(
@@ -151,13 +209,19 @@ async function loadCollection(collection) {
 
 
 /* -------------------------------------------------------------------------- */
-/* Validation                                                                 */
+/* Structural Validation                                                      */
 /* -------------------------------------------------------------------------- */
 
-function validateRequiredFields(entity, errors) {
+function validateRequiredFields(
+    entity,
+    errors
+) {
+    const location =
+        `${entity.collection}/${entity.folder}`;
+
     if (entity.error) {
         errors.push(
-            `${entity.collection}/${entity.folder}: ${entity.error}`
+            `${location}: ${entity.error}`
         );
 
         return;
@@ -165,40 +229,86 @@ function validateRequiredFields(entity, errors) {
 
     if (!entity.data) {
         errors.push(
-            `${entity.collection}/${entity.folder}: Missing or invalid front matter`
+            `${location}: Missing or invalid front matter`
         );
 
         return;
     }
 
-    const required = [
-        "title",
-        "layout",
-        "permalink",
-        "id",
-        "entity"
-    ];
-
-    for (const field of required) {
+    for (const field of REQUIRED_FIELDS) {
         if (!entity.data[field]) {
             errors.push(
-                `${entity.collection}/${entity.folder}: Missing "${field}"`
+                `${location}: Missing "${field}"`
             );
         }
     }
+}
 
-    if (
-        entity.data.id &&
-        entity.data.id !== entity.folder
-    ) {
+
+function validateFolderId(
+    entity,
+    errors
+) {
+    if (!entity.data?.id) {
+        return;
+    }
+
+    if (entity.data.id !== entity.folder) {
         errors.push(
-            `${entity.collection}/${entity.folder}: Folder name does not match id "${entity.data.id}"`
+            `${entity.collection}/${entity.folder}: ` +
+            `Folder name does not match id "${entity.data.id}"`
         );
     }
 }
 
 
-function validateDuplicateIds(entities, errors) {
+function validateEntityType(
+    entity,
+    errors
+) {
+    if (!entity.data?.entity) {
+        return;
+    }
+
+    const expected =
+        COLLECTIONS[entity.collection];
+
+    if (entity.data.entity !== expected) {
+        errors.push(
+            `${entity.collection}/${entity.folder}: ` +
+            `Expected entity "${expected}" but found "${entity.data.entity}"`
+        );
+    }
+}
+
+
+function validatePermalink(
+    entity,
+    errors
+) {
+    if (
+        !entity.data?.permalink ||
+        !entity.data?.id
+    ) {
+        return;
+    }
+
+    const expected =
+        `/${entity.collection}/${entity.data.id}/`;
+
+    if (entity.data.permalink !== expected) {
+        errors.push(
+            `${entity.collection}/${entity.folder}: ` +
+            `Expected permalink "${expected}" but found "${entity.data.permalink}"`
+        );
+    }
+}
+
+
+function validateDuplicateIds(
+    entities,
+    errors
+) {
     const ids = new Map();
 
     for (const entity of entities) {
@@ -206,105 +316,309 @@ function validateDuplicateIds(entities, errors) {
             continue;
         }
 
+        const location =
+            `${entity.collection}/${entity.folder}`;
+
         const existing = ids.get(
             entity.data.id
         );
 
         if (existing) {
             errors.push(
-                `Duplicate id "${entity.data.id}" found in ${existing} and ${entity.collection}/${entity.folder}`
+                `Duplicate id "${entity.data.id}" found in ` +
+                `${existing} and ${location}`
             );
         } else {
             ids.set(
                 entity.data.id,
-                `${entity.collection}/${entity.folder}`
+                location
             );
         }
     }
 }
 
 
+/* -------------------------------------------------------------------------- */
+/* Relationship Utilities                                                     */
+/* -------------------------------------------------------------------------- */
+
+function getIds(collection) {
+    return new Set(
+        collection
+            .map((entity) =>
+                entity.data?.id
+            )
+            .filter(Boolean)
+    );
+}
+
+
+function validateReference({
+    entity,
+    field,
+    validIds,
+    required = false,
+    errors
+}) {
+    if (!entity.data) {
+        return;
+    }
+
+    const value = entity.data[field];
+
+    if (!value) {
+        if (required) {
+            errors.push(
+                `${entity.collection}/${entity.folder}: ` +
+                `Missing ${field} relationship`
+            );
+        }
+
+        return;
+    }
+
+    if (Array.isArray(value)) {
+        errors.push(
+            `${entity.collection}/${entity.folder}: ` +
+            `"${field}" must contain a single ID`
+        );
+
+        return;
+    }
+
+    if (!validIds.has(value)) {
+        errors.push(
+            `${entity.collection}/${entity.folder}: ` +
+            `Unknown ${field} "${value}"`
+        );
+    }
+}
+
+
+function validateReferenceList({
+    entity,
+    field,
+    validIds,
+    errors
+}) {
+    if (!entity.data) {
+        return;
+    }
+
+    const values = entity.data[field];
+
+    if (values === undefined) {
+        return;
+    }
+
+    if (!Array.isArray(values)) {
+        errors.push(
+            `${entity.collection}/${entity.folder}: ` +
+            `"${field}" must be a list`
+        );
+
+        return;
+    }
+
+    for (const value of values) {
+        if (!validIds.has(value)) {
+            errors.push(
+                `${entity.collection}/${entity.folder}: ` +
+                `Unknown ${field} ID "${value}"`
+            );
+        }
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Relationship Validation                                                    */
+/* -------------------------------------------------------------------------- */
+
 function validateRelationships(
     collections,
     errors
 ) {
-    const employerIds = new Set(
-        collections.employers
-            .map((entity) => entity.data?.id)
-            .filter(Boolean)
-    );
+    const employerIds =
+        getIds(collections.employers);
 
-    const positionIds = new Set(
-        collections.positions
-            .map((entity) => entity.data?.id)
-            .filter(Boolean)
-    );
+    const positionIds =
+        getIds(collections.positions);
 
-    const competencyIds = new Set(
-        collections.competencies
-            .map((entity) => entity.data?.id)
-            .filter(Boolean)
-    );
+    const competencyIds =
+        getIds(collections.competencies);
 
+    const institutionIds =
+        getIds(collections.institutions);
+
+    const credentialIds =
+        getIds(collections.credentials);
+
+    const softwareIds =
+        getIds(collections.software);
+
+    const standardIds =
+        getIds(collections.standards);
+
+    const projectIds =
+        getIds(collections.projects);
+
+
+    /*
+     * Position -> Employer
+     */
     for (const position of collections.positions) {
-        if (!position.data) {
-            continue;
-        }
-
-        const employerId =
-            position.data.employer;
-
-        if (!employerId) {
-            errors.push(
-                `positions/${position.folder}: Missing employer relationship`
-            );
-
-            continue;
-        }
-
-        if (!employerIds.has(employerId)) {
-            errors.push(
-                `positions/${position.folder}: Unknown employer "${employerId}"`
-            );
-        }
+        validateReference({
+            entity: position,
+            field: "employer",
+            validIds: employerIds,
+            required: true,
+            errors
+        });
     }
 
+
+    /*
+     * Project -> Position
+     *
+     * Projects may additionally reference competencies,
+     * software, and standards.
+     */
     for (const project of collections.projects) {
-        if (!project.data) {
-            continue;
-        }
+        validateReference({
+            entity: project,
+            field: "position",
+            validIds: positionIds,
+            required: true,
+            errors
+        });
 
-        const positionId =
-            project.data.position;
+        validateReferenceList({
+            entity: project,
+            field: "competencies",
+            validIds: competencyIds,
+            errors
+        });
 
-        if (!positionId) {
-            errors.push(
-                `projects/${project.folder}: Missing position relationship`
-            );
-        } else if (!positionIds.has(positionId)) {
-            errors.push(
-                `projects/${project.folder}: Unknown position "${positionId}"`
-            );
-        }
+        validateReferenceList({
+            entity: project,
+            field: "software",
+            validIds: softwareIds,
+            errors
+        });
 
-        const competencies =
-            project.data.competencies || [];
+        validateReferenceList({
+            entity: project,
+            field: "standards",
+            validIds: standardIds,
+            errors
+        });
+    }
 
-        if (!Array.isArray(competencies)) {
-            errors.push(
-                `projects/${project.folder}: "competencies" must be a list`
-            );
 
-            continue;
-        }
+    /*
+     * Academic Credential -> Institution
+     */
+    for (
+        const credential
+        of collections.credentials
+    ) {
+        validateReference({
+            entity: credential,
+            field: "institution",
+            validIds: institutionIds,
+            required: true,
+            errors
+        });
+    }
 
-        for (const competencyId of competencies) {
-            if (!competencyIds.has(competencyId)) {
-                errors.push(
-                    `projects/${project.folder}: Unknown competency "${competencyId}"`
-                );
-            }
-        }
+
+    /*
+     * Course -> Institution
+     *
+     * A course may belong to zero, one, or multiple academic
+     * credentials. Multiple credentials are useful when coursework
+     * contributes to overlapping programs such as a graduate degree
+     * and graduate certificate.
+     */
+    for (const course of collections.coursework) {
+        validateReference({
+            entity: course,
+            field: "institution",
+            validIds: institutionIds,
+            required: true,
+            errors
+        });
+
+        validateReferenceList({
+            entity: course,
+            field: "credentials",
+            validIds: credentialIds,
+            errors
+        });
+
+        validateReferenceList({
+            entity: course,
+            field: "competencies",
+            validIds: competencyIds,
+            errors
+        });
+
+        validateReferenceList({
+            entity: course,
+            field: "software",
+            validIds: softwareIds,
+            errors
+        });
+
+        validateReferenceList({
+            entity: course,
+            field: "projects",
+            validIds: projectIds,
+            errors
+        });
+    }
+
+
+    /*
+     * Publications can connect back to projects and competencies.
+     *
+     * These relationships are optional because not every publication
+     * necessarily originates from a project represented on the site.
+     */
+    for (
+        const publication
+        of collections.publications
+    ) {
+        validateReferenceList({
+            entity: publication,
+            field: "projects",
+            validIds: projectIds,
+            errors
+        });
+
+        validateReferenceList({
+            entity: publication,
+            field: "competencies",
+            validIds: competencyIds,
+            errors
+        });
+    }
+
+
+    /*
+     * Certifications may be associated with competencies.
+     */
+    for (
+        const certification
+        of collections.certifications
+    ) {
+        validateReferenceList({
+            entity: certification,
+            field: "competencies",
+            validIds: competencyIds,
+            errors
+        });
     }
 }
 
@@ -320,9 +634,14 @@ async function main() {
 
     const collections = {};
 
-    for (const collection of COLLECTIONS) {
+    for (
+        const collection
+        of Object.keys(COLLECTIONS)
+    ) {
         collections[collection] =
-            await loadCollection(collection);
+            await loadCollection(
+                collection
+            );
     }
 
     const allEntities =
@@ -332,6 +651,21 @@ async function main() {
 
     for (const entity of allEntities) {
         validateRequiredFields(
+            entity,
+            errors
+        );
+
+        validateFolderId(
+            entity,
+            errors
+        );
+
+        validateEntityType(
+            entity,
+            errors
+        );
+
+        validatePermalink(
             entity,
             errors
         );
@@ -352,9 +686,11 @@ async function main() {
             `Found ${errors.length} validation error(s):\n`
         );
 
-        errors.forEach((error) => {
-            console.error(`- ${error}`);
-        });
+        for (const error of errors) {
+            console.error(
+                `- ${error}`
+            );
+        }
 
         process.exitCode = 1;
         return;

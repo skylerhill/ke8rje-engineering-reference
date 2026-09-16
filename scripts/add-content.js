@@ -6,21 +6,30 @@ const { stdin: input, stdout: output } = require("node:process");
 /*
  * Engineering Reference Content Generator
  *
- * Creates canonical Markdown content for the Eleventy site.
+ * Creates canonical Markdown entities for the Eleventy site.
  *
  * Relationships are stored using stable entity IDs rather than display
- * names. This allows titles and page content to change without breaking
- * relationships elsewhere in the site.
+ * names. This allows titles and descriptive content to change without
+ * breaking relationships elsewhere in the site.
  */
+
+
+/* -------------------------------------------------------------------------- */
+/* Configuration                                                              */
+/* -------------------------------------------------------------------------- */
 
 const CONTENT_TYPES = [
     "Employer",
     "Position",
     "Project",
     "Competency",
-    "Education",
+    "Institution",
+    "Academic Credential",
+    "Coursework",
     "Software",
-    "Standard"
+    "Standard",
+    "Certification",
+    "Publication"
 ];
 
 
@@ -37,14 +46,32 @@ function slugify(value) {
 }
 
 
+function requireValue(value, fieldName) {
+    const trimmed = value.trim();
+
+    if (!trimmed) {
+        throw new Error(
+            `${fieldName} cannot be empty.`
+        );
+    }
+
+    return trimmed;
+}
+
+
 async function getDirectories(directory) {
     try {
-        const entries = await fs.readdir(directory, {
-            withFileTypes: true
-        });
+        const entries = await fs.readdir(
+            directory,
+            {
+                withFileTypes: true
+            }
+        );
 
         return entries
-            .filter((entry) => entry.isDirectory())
+            .filter((entry) =>
+                entry.isDirectory()
+            )
             .map((entry) => entry.name)
             .sort();
     } catch (error) {
@@ -83,8 +110,16 @@ async function getEntityTitle(directory, id) {
 }
 
 
-async function getEntities(directory) {
-    const ids = await getDirectories(directory);
+async function getEntities(collection) {
+    const directory = path.join(
+        process.cwd(),
+        "src",
+        collection
+    );
+
+    const ids = await getDirectories(
+        directory
+    );
 
     const entities = await Promise.all(
         ids.map(async (id) => ({
@@ -134,11 +169,16 @@ async function writeEntityFile(
         "index.md"
     );
 
-    await ensureFileDoesNotExist(entityFile);
+    await ensureFileDoesNotExist(
+        entityFile
+    );
 
-    await fs.mkdir(entityDirectory, {
-        recursive: true
-    });
+    await fs.mkdir(
+        entityDirectory,
+        {
+            recursive: true
+        }
+    );
 
     await fs.writeFile(
         entityFile,
@@ -169,11 +209,13 @@ async function selectOne(
 
     console.log(`\n${prompt}\n`);
 
-    entities.forEach((entity, index) => {
-        console.log(
-            `${index + 1}. ${entity.title}`
-        );
-    });
+    entities.forEach(
+        (entity, index) => {
+            console.log(
+                `${index + 1}. ${entity.title}`
+            );
+        }
+    );
 
     const answer = await rl.question(
         "\nSelect an item: "
@@ -209,11 +251,13 @@ async function selectMany(
 
     console.log(`\n${prompt}\n`);
 
-    entities.forEach((entity, index) => {
-        console.log(
-            `${index + 1}. ${entity.title}`
-        );
-    });
+    entities.forEach(
+        (entity, index) => {
+            console.log(
+                `${index + 1}. ${entity.title}`
+            );
+        }
+    );
 
     const answer = await rl.question(
         "\nSelect items (comma-separated, or press Enter for none): "
@@ -236,19 +280,23 @@ async function selectMany(
         )
     ];
 
-    return selections.map((selection) => {
-        if (
-            !Number.isInteger(selection) ||
-            selection < 1 ||
-            selection > entities.length
-        ) {
-            throw new Error(
-                "Invalid selection."
-            );
-        }
+    return selections.map(
+        (selection) => {
+            if (
+                !Number.isInteger(selection) ||
+                selection < 1 ||
+                selection > entities.length
+            ) {
+                throw new Error(
+                    "Invalid selection."
+                );
+            }
 
-        return entities[selection - 1].id;
-    });
+            return entities[
+                selection - 1
+            ].id;
+        }
+    );
 }
 
 
@@ -267,10 +315,25 @@ function buildListFrontMatter(
     return (
         `\n${name}:\n` +
         values
-            .map((value) => `  - ${value}`)
+            .map(
+                (value) =>
+                    `  - ${value}`
+            )
             .join("\n") +
         "\n"
     );
+}
+
+
+function buildOptionalField(
+    name,
+    value
+) {
+    if (!value.trim()) {
+        return "";
+    }
+
+    return `\n${name}: ${value.trim()}`;
 }
 
 
@@ -279,17 +342,14 @@ function buildListFrontMatter(
 /* -------------------------------------------------------------------------- */
 
 async function createEmployer(rl) {
-    const title = (
-        await rl.question("\nEmployer name: ")
-    ).trim();
+    const title = requireValue(
+        await rl.question(
+            "\nEmployer name: "
+        ),
+        "Employer name"
+    );
 
     const id = slugify(title);
-
-    if (!id) {
-        throw new Error(
-            "Employer name cannot be empty."
-        );
-    }
 
     const markdown = `---
 title: ${title}
@@ -315,27 +375,15 @@ entity: employer
 /* -------------------------------------------------------------------------- */
 
 async function createPosition(rl) {
-    const title = (
-        await rl.question("\nPosition title: ")
-    ).trim();
-
-    const id = slugify(title);
-
-    if (!id) {
-        throw new Error(
-            "Position title cannot be empty."
-        );
-    }
-
-    const employersDirectory = path.join(
-        process.cwd(),
-        "src",
-        "employers"
+    const title = requireValue(
+        await rl.question(
+            "\nPosition title: "
+        ),
+        "Position title"
     );
 
-    const employers = await getEntities(
-        employersDirectory
-    );
+    const employers =
+        await getEntities("employers");
 
     const employerId = await selectOne(
         rl,
@@ -344,23 +392,20 @@ async function createPosition(rl) {
     );
 
     /*
-     * Include the employer ID in the position ID.
-     *
-     * Example:
-     *   Employer: Boeing
-     *   Position: Systems Engineer
-     *   ID: boeing-systems-engineer
+     * Employer ID is included because titles such as
+     * "Instructor" or "Systems Engineer" can occur at
+     * multiple employers.
      */
-    const positionId = slugify(
+    const id = slugify(
         `${employerId}-${title}`
     );
 
     const markdown = `---
 title: ${title}
 layout: entity
-permalink: /positions/${positionId}/
+permalink: /positions/${id}/
 
-id: ${positionId}
+id: ${id}
 entity: position
 
 employer: ${employerId}
@@ -370,7 +415,7 @@ employer: ${employerId}
 
     await writeEntityFile(
         "positions",
-        positionId,
+        id,
         markdown
     );
 }
@@ -381,43 +426,17 @@ employer: ${employerId}
 /* -------------------------------------------------------------------------- */
 
 async function createProject(rl) {
-    const title = (
-        await rl.question("\nProject name: ")
-    ).trim();
+    const title = requireValue(
+        await rl.question(
+            "\nProject name: "
+        ),
+        "Project name"
+    );
 
     const id = slugify(title);
 
-    if (!id) {
-        throw new Error(
-            "Project name cannot be empty."
-        );
-    }
-
-    /*
-     * Check for duplicates before asking the user
-     * additional relationship questions.
-     */
-    const projectFile = path.join(
-        process.cwd(),
-        "src",
-        "projects",
-        id,
-        "index.md"
-    );
-
-    await ensureFileDoesNotExist(
-        projectFile
-    );
-
-    const positionsDirectory = path.join(
-        process.cwd(),
-        "src",
-        "positions"
-    );
-
-    const positions = await getEntities(
-        positionsDirectory
-    );
+    const positions =
+        await getEntities("positions");
 
     const positionId = await selectOne(
         rl,
@@ -425,26 +444,34 @@ async function createProject(rl) {
         positions
     );
 
-    const competenciesDirectory = path.join(
-        process.cwd(),
-        "src",
-        "competencies"
-    );
+    const competencies =
+        await getEntities("competencies");
 
-    const competencies = await getEntities(
-        competenciesDirectory
-    );
+    const competencyIds =
+        await selectMany(
+            rl,
+            "Which competencies are associated with this project?",
+            competencies
+        );
 
-    const competencyIds = await selectMany(
-        rl,
-        "Which competencies are associated with this project?",
-        competencies
-    );
+    const software =
+        await getEntities("software");
 
-    const competenciesFrontMatter =
-        buildListFrontMatter(
-            "competencies",
-            competencyIds
+    const softwareIds =
+        await selectMany(
+            rl,
+            "Which software/tools are associated with this project?",
+            software
+        );
+
+    const standards =
+        await getEntities("standards");
+
+    const standardIds =
+        await selectMany(
+            rl,
+            "Which standards are associated with this project?",
+            standards
         );
 
     const markdown = `---
@@ -456,7 +483,16 @@ id: ${id}
 entity: project
 
 position: ${positionId}
-${competenciesFrontMatter}---
+${buildListFrontMatter(
+    "competencies",
+    competencyIds
+)}${buildListFrontMatter(
+    "software",
+    softwareIds
+)}${buildListFrontMatter(
+    "standards",
+    standardIds
+)}---
 
 `;
 
@@ -473,19 +509,14 @@ ${competenciesFrontMatter}---
 /* -------------------------------------------------------------------------- */
 
 async function createCompetency(rl) {
-    const title = (
+    const title = requireValue(
         await rl.question(
             "\nCompetency name: "
-        )
-    ).trim();
+        ),
+        "Competency name"
+    );
 
     const id = slugify(title);
-
-    if (!id) {
-        throw new Error(
-            "Competency name cannot be empty."
-        );
-    }
 
     const markdown = `---
 title: ${title}
@@ -500,6 +531,441 @@ entity: competency
 
     await writeEntityFile(
         "competencies",
+        id,
+        markdown
+    );
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Institution                                                                */
+/* -------------------------------------------------------------------------- */
+
+async function createInstitution(rl) {
+    const title = requireValue(
+        await rl.question(
+            "\nInstitution name: "
+        ),
+        "Institution name"
+    );
+
+    const id = slugify(title);
+
+    const location = await rl.question(
+        "Location (optional): "
+    );
+
+    const markdown = `---
+title: ${title}
+layout: entity
+permalink: /institutions/${id}/
+
+id: ${id}
+entity: institution${buildOptionalField(
+    "location",
+    location
+)}
+---
+
+`;
+
+    await writeEntityFile(
+        "institutions",
+        id,
+        markdown
+    );
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Academic Credential                                                        */
+/* -------------------------------------------------------------------------- */
+
+async function createCredential(rl) {
+    const title = requireValue(
+        await rl.question(
+            "\nAcademic credential title: "
+        ),
+        "Academic credential title"
+    );
+
+    const institutions =
+        await getEntities("institutions");
+
+    const institutionId =
+        await selectOne(
+            rl,
+            "Which institution awarded this credential?",
+            institutions
+        );
+
+    /*
+     * Institution ID prevents collisions between similarly named
+     * credentials at different schools.
+     */
+    const id = slugify(
+        `${institutionId}-${title}`
+    );
+
+    const credentialType =
+        await rl.question(
+            "Credential type (optional): "
+        );
+
+    const field = await rl.question(
+        "Field of study (optional): "
+    );
+
+    const start = await rl.question(
+        "Start date YYYY-MM (optional): "
+    );
+
+    const end = await rl.question(
+        "End date YYYY-MM (optional): "
+    );
+
+    const markdown = `---
+title: ${title}
+layout: entity
+permalink: /credentials/${id}/
+
+id: ${id}
+entity: credential
+
+institution: ${institutionId}${buildOptionalField(
+    "credential_type",
+    credentialType
+)}${buildOptionalField(
+    "field",
+    field
+)}${buildOptionalField(
+    "start",
+    start
+)}${buildOptionalField(
+    "end",
+    end
+)}
+---
+
+`;
+
+    await writeEntityFile(
+        "credentials",
+        id,
+        markdown
+    );
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Coursework                                                                 */
+/* -------------------------------------------------------------------------- */
+
+async function createCoursework(rl) {
+    const institutions =
+        await getEntities("institutions");
+
+    const institutionId =
+        await selectOne(
+            rl,
+            "Which institution offered this course?",
+            institutions
+        );
+
+    const code = requireValue(
+        await rl.question(
+            "\nCourse code: "
+        ),
+        "Course code"
+    );
+
+    const title = requireValue(
+        await rl.question(
+            "Course title: "
+        ),
+        "Course title"
+    );
+
+    /*
+     * Institution + course code provides a stable ID while allowing
+     * the displayed course title to change without changing links.
+     */
+    const id = slugify(
+        `${institutionId}-${code}`
+    );
+
+    const credits = await rl.question(
+        "Credits (optional): "
+    );
+
+    const term = await rl.question(
+        "Term (optional): "
+    );
+
+    const credentials =
+        await getEntities("credentials");
+
+    const credentialIds =
+        await selectMany(
+            rl,
+            "Which academic credentials is this course associated with?",
+            credentials
+        );
+
+    const competencies =
+        await getEntities("competencies");
+
+    const competencyIds =
+        await selectMany(
+            rl,
+            "Which competencies are associated with this course?",
+            competencies
+        );
+
+    const software =
+        await getEntities("software");
+
+    const softwareIds =
+        await selectMany(
+            rl,
+            "Which software/tools are associated with this course?",
+            software
+        );
+
+    const projects =
+        await getEntities("projects");
+
+    const projectIds =
+        await selectMany(
+            rl,
+            "Which projects are associated with this course?",
+            projects
+        );
+
+    const markdown = `---
+title: ${title}
+layout: entity
+permalink: /coursework/${id}/
+
+id: ${id}
+entity: course
+
+institution: ${institutionId}
+
+code: ${code}${buildOptionalField(
+    "credits",
+    credits
+)}${buildOptionalField(
+    "term",
+    term
+)}${buildListFrontMatter(
+    "credentials",
+    credentialIds
+)}${buildListFrontMatter(
+    "competencies",
+    competencyIds
+)}${buildListFrontMatter(
+    "software",
+    softwareIds
+)}${buildListFrontMatter(
+    "projects",
+    projectIds
+)}---
+
+`;
+
+    await writeEntityFile(
+        "coursework",
+        id,
+        markdown
+    );
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Software                                                                   */
+/* -------------------------------------------------------------------------- */
+
+async function createSoftware(rl) {
+    const title = requireValue(
+        await rl.question(
+            "\nSoftware/tool name: "
+        ),
+        "Software/tool name"
+    );
+
+    const id = slugify(title);
+
+    const markdown = `---
+title: ${title}
+layout: entity
+permalink: /software/${id}/
+
+id: ${id}
+entity: software
+---
+
+`;
+
+    await writeEntityFile(
+        "software",
+        id,
+        markdown
+    );
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Standard                                                                   */
+/* -------------------------------------------------------------------------- */
+
+async function createStandard(rl) {
+    const title = requireValue(
+        await rl.question(
+            "\nStandard name/designation: "
+        ),
+        "Standard name"
+    );
+
+    const id = slugify(title);
+
+    const markdown = `---
+title: ${title}
+layout: entity
+permalink: /standards/${id}/
+
+id: ${id}
+entity: standard
+---
+
+`;
+
+    await writeEntityFile(
+        "standards",
+        id,
+        markdown
+    );
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Certification                                                              */
+/* -------------------------------------------------------------------------- */
+
+async function createCertification(rl) {
+    const title = requireValue(
+        await rl.question(
+            "\nCertification name: "
+        ),
+        "Certification name"
+    );
+
+    const id = slugify(title);
+
+    const issuer = await rl.question(
+        "Issuer (optional): "
+    );
+
+    const issued = await rl.question(
+        "Issue date YYYY-MM (optional): "
+    );
+
+    const competencies =
+        await getEntities("competencies");
+
+    const competencyIds =
+        await selectMany(
+            rl,
+            "Which competencies are associated with this certification?",
+            competencies
+        );
+
+    const markdown = `---
+title: ${title}
+layout: entity
+permalink: /certifications/${id}/
+
+id: ${id}
+entity: certification${buildOptionalField(
+    "issuer",
+    issuer
+)}${buildOptionalField(
+    "issued",
+    issued
+)}${buildListFrontMatter(
+    "competencies",
+    competencyIds
+)}---
+
+`;
+
+    await writeEntityFile(
+        "certifications",
+        id,
+        markdown
+    );
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Publication                                                                */
+/* -------------------------------------------------------------------------- */
+
+async function createPublication(rl) {
+    const title = requireValue(
+        await rl.question(
+            "\nPublication title: "
+        ),
+        "Publication title"
+    );
+
+    const id = slugify(title);
+
+    const year = await rl.question(
+        "Publication year (optional): "
+    );
+
+    const projects =
+        await getEntities("projects");
+
+    const projectIds =
+        await selectMany(
+            rl,
+            "Which projects are associated with this publication?",
+            projects
+        );
+
+    const competencies =
+        await getEntities("competencies");
+
+    const competencyIds =
+        await selectMany(
+            rl,
+            "Which competencies are associated with this publication?",
+            competencies
+        );
+
+    const markdown = `---
+title: ${title}
+layout: entity
+permalink: /publications/${id}/
+
+id: ${id}
+entity: publication${buildOptionalField(
+    "year",
+    year
+)}${buildListFrontMatter(
+    "projects",
+    projectIds
+)}${buildListFrontMatter(
+    "competencies",
+    competencyIds
+)}---
+
+`;
+
+    await writeEntityFile(
+        "publications",
         id,
         markdown
     );
@@ -572,12 +1038,32 @@ async function main() {
                 await createCompetency(rl);
                 break;
 
-            case "Education":
+            case "Institution":
+                await createInstitution(rl);
+                break;
+
+            case "Academic Credential":
+                await createCredential(rl);
+                break;
+
+            case "Coursework":
+                await createCoursework(rl);
+                break;
+
             case "Software":
+                await createSoftware(rl);
+                break;
+
             case "Standard":
-                console.log(
-                    `\n${type} creation will be added after its content model is defined.`
-                );
+                await createStandard(rl);
+                break;
+
+            case "Certification":
+                await createCertification(rl);
+                break;
+
+            case "Publication":
+                await createPublication(rl);
                 break;
 
             default:
