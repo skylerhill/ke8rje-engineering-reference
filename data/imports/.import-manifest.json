@@ -1,0 +1,769 @@
+{
+  "version": 1,
+  "files": {
+    "credentials/zane-state-college-ats-electro-mechanical-engineering-technology/index.md": {
+      "hash": "93f84084fe1969f776f74643d1a97a891a443a9ca56e6b1155abeb3cfe26fe1f",
+      "source": "academic-credentials.json"
+    },
+    "credentials/zane-state-college-aas-electrical-electronic-engineering-technology/index.md": {
+      "hash": "e4d3c798f3e11eaf24df6a8fd2b57d659282df8f89339b58509ca8fa969a20b0",
+      "source": "academic-credentials.json"
+    },
+    "credentials/miami-university-bs-engineering-technology-electro-mechanical/index.md": {
+      "hash": "4ab44e4d0d9b15b5e6f81f1912c9eec0bf43f8b19a8188955f6a43810aca15a4",
+      "source": "academic-credentials.json"
+    },
+    "credentials/ohio-university-ms-electrical-engineering/index.md": {
+      "hash": "b5b83161f65dfbafb0400b5b2b0c4a5ebf265d57e63e4a2a40a46571dff6233e",
+      "source": "academic-credentials.json"
+    },
+    "credentials/ohio-university-graduate-certificate-electronic-navigation/index.md": {
+      "hash": "b98ca44bb57ab95471f0b700173545028b0face89a2cb4bc7eca3d3412c2a078",
+      "source": "academic-credentials.json"
+    },
+    "credentials/zane-state-college-associate-of-science/index.md": {
+      "hash": "7ee4ea91aabda0c799889cc1442dfc3dace3503b8b578b26c3cb25501c14dcee",
+      "source": "academic-credentials.json"
+    },
+    "studies/ohio-state-university-non-degree-2013-2014/index.md": {
+      "hash": "739c44079afe53372d4e7c2412a7774f287a340881b34e4fafc9cd3f1709316f",
+      "source": "academic-studies.json"
+    },
+    "studies/ohio-university-non-degree-2014/index.md": {
+      "hash": "6f09a2acba8bbd60df55ff20aee30d154a61b25966a8eb6bf1fc2ac95b440832",
+      "source": "academic-studies.json"
+    },
+    "studies/zane-state-college-non-degree-2017/index.md": {
+      "hash": "ecf2740cd9d98256878a609255b02f637457190311a30053caf2bb0304cd3f03",
+      "source": "academic-studies.json"
+    },
+    "studies/university-of-cincinnati-non-degree-2018/index.md": {
+      "hash": "2791b20c063cd428e2737480d8463205dc4021fd9430e5fa79500c3a070f851d",
+      "source": "academic-studies.json"
+    },
+    "studies/central-ohio-technical-college-non-degree-2018/index.md": {
+      "hash": "849de46ba36bf539d5d117930ef2c24923caed433cfedb732bbac6a3b0259782",
+      "source": "academic-studies.json"
+    },
+    "studies/zane-state-college-non-degree-2020/index.md": {
+      "hash": "59b89421034e6d801a8e4e5ec569d2d43643f68d7b9615fedc69d9fe0b6c9687",
+      "source": "academic-studies.json"
+    },
+    "competencies/systems-engineering/index.md": {
+      "hash": "4bd3982c360d743d79b52f7484dd65951b11f84fd18414e471198143c72d61ef",
+      "source": "competencies.json"
+    },
+    "competencies/requirements-engineering/index.md": {
+      "hash": "11fd5ecf673a3e543fd18638958dae119c56a3cfe8a3d129e1ca56d3a13804b3",
+      "source": "competencies.json"
+    },
+    "competencies/verification-validation/index.md": {
+      "hash": "d6e8d36e3353e4704d474f60b79829febd6dd5e861629ff0f3c86c28bb99dc47",
+      "source": "competencies.json"
+    },
+    "competencies/systems-integration/index.md": {
+      "hash": "e9696ce7968268d6f1f353bb5d372a9913dbe7765d7f226855819200cd5c93a1",
+      "source": "competencies.json"
+    },
+    "competencies/electrical-engineering/index.md": {
+      "hash": "e36fdf4423e42fa3abdc294e8c91a0efcb6899472d0e98472b9ecf27b19079a9",
+      "source": "competencies.json"
+    },
+    "competencies/electrical-design/index.md": {
+      "hash": "75af9da4e1b11ac66b6d3b2a58eaf697f28590b62d810875ffe9d43fe115e643",
+      "source": "competencies.json"
+    },
+    "competencies/circuit-analysis/index.md": {
+      "hash": "be4fe714a1def365ac1c2e405b9a857242229148cb061e1243c1a72ee4b88b3e",
+      "source": "competencies.json"
+    },
+    "competencies/analog-electronics/index.md": {
+      "hash": "42427aca5a58ae437c723c25f9c62b3e09e0dc23a4b46e39de114358874a1609",
+      "source": "competencies.json"
+    },
+    "competencies/digital-electronics/index.md": {
+      "hash": "a5719974cf615a53a2d32e8f0765da85b547443a0ebf76e462f6e28a96bfdcbf",
+      "source": "competencies.json"
+    },
+    "competencies/signal-conditioning/index.md": {
+      "hash": "65ab99e5cfb242ca1e4159ff578c303d7dc17c4712947755bb7ca48f0ed794ac",
+      "source": "competencies.json"
+    },
+    "competencies/instrumentation-measurement/index.md": {
+      "hash": "4e87603f5704f3790b10bb364732951267a9f4677c728c0cd5e6c37439941b83",
+      "source": "competencies.json"
+    },
+    "competencies/test-engineering/index.md": {
+      "hash": "f7aec8eba7430ced01a2fa8545210b6fba90a9f7ca3b5b3ca19dd1408f5847c9",
+      "source": "competencies.json"
+    },
+    "competencies/automated-test-equipment/index.md": {
+      "hash": "0ed0db7deb39b5155532ffde69e12c10332fbc6b55db519cacc6d91f2ca27626",
+      "source": "competencies.json"
+    },
+    "competencies/troubleshooting-root-cause-analysis/index.md": {
+      "hash": "120940909f3002260a39c01382f2660a9ba07e49492cff76f8701198ccdfd956",
+      "source": "competencies.json"
+    },
+    "competencies/reverse-engineering/index.md": {
+      "hash": "12c51ce37516c500e9a00bc205c3145866991ca0e9aa34e045502a5ab9f34606",
+      "source": "competencies.json"
+    },
+    "competencies/controls-engineering/index.md": {
+      "hash": "406dc6616d5e28fb2d242b6bbbe7bd9a514bf8bc9041aee7f6c80767b81a312b",
+      "source": "competencies.json"
+    },
+    "competencies/industrial-automation/index.md": {
+      "hash": "d9a5576a6df3ba83296622bec404cdaae6fc2bb58b9709f15c19c9715e183ffe",
+      "source": "competencies.json"
+    },
+    "competencies/programmable-logic-controllers/index.md": {
+      "hash": "1595d13947c881bda2c3cfc7e752923030441789b40c606f028fc9c7e0681922",
+      "source": "competencies.json"
+    },
+    "competencies/robotics/index.md": {
+      "hash": "e2f2ed6ab753b547730836ba005322629edd666c9dbb9c36f1090df486ded53e",
+      "source": "competencies.json"
+    },
+    "competencies/electric-machines/index.md": {
+      "hash": "eb0576b840232bf974fb1bb7cab5bc5a532dcc81d8c7ec8c07f94fa01cd797d1",
+      "source": "competencies.json"
+    },
+    "competencies/embedded-systems/index.md": {
+      "hash": "41aaaac7b2bd8eb33d478eac00ac942551a96cb59e856583f6149147207acd7b",
+      "source": "competencies.json"
+    },
+    "competencies/sensor-systems/index.md": {
+      "hash": "451bc7836eae1c8ac8d0ae580e17acfec8ef33fa3e92b82e14152b41381e620e",
+      "source": "competencies.json"
+    },
+    "competencies/data-acquisition/index.md": {
+      "hash": "54089c70cb3caa8a7acf0b51e72dfa08770575f6c7112adcb383f1f79b70923d",
+      "source": "competencies.json"
+    },
+    "competencies/industrial-internet-of-things/index.md": {
+      "hash": "bae4cce964be84728131758bde9fcaa3e7cec67ad3f18d8d006a9f1dceacb880",
+      "source": "competencies.json"
+    },
+    "competencies/wireless-communications/index.md": {
+      "hash": "df1b594dec9e7b0408c14fab943e534e1075b92515fcbf63982860602497b1f2",
+      "source": "competencies.json"
+    },
+    "competencies/navigation-systems/index.md": {
+      "hash": "d98af1a6813845c990aa8cfe40080d47d677be92c7fdc143f57a28e6522a5fdb",
+      "source": "competencies.json"
+    },
+    "competencies/inertial-navigation/index.md": {
+      "hash": "88e8f3bcf6d78097b7520251166a802207f04ade540d228a7b8f7c76ff46b43b",
+      "source": "competencies.json"
+    },
+    "competencies/satellite-navigation/index.md": {
+      "hash": "e40ec8750eafab330ebe803c2a96a638b4d8e805a78656933a1030d87699c7d8",
+      "source": "competencies.json"
+    },
+    "competencies/integrated-navigation/index.md": {
+      "hash": "b9a1d93082d9ce5ea6298ee67858e64aa006bef0ec861aca1c0192c6bd3a0d46",
+      "source": "competencies.json"
+    },
+    "competencies/cad-engineering-drafting/index.md": {
+      "hash": "128e6bb03a6b9cff072c2edb0077deabd8abcfae5e56441afeac0dd84154e2c6",
+      "source": "competencies.json"
+    },
+    "competencies/engineering-documentation/index.md": {
+      "hash": "e74a4b79cb8592e9fc324fc386b3575c15bd7612fab21c78342fd646b01e91a5",
+      "source": "competencies.json"
+    },
+    "competencies/configuration-management/index.md": {
+      "hash": "9be1bb8fa5d423373a7c6e186214aa98105ed3f6c596f6e5abed68d6061e48c0",
+      "source": "competencies.json"
+    },
+    "competencies/engineering-project-management/index.md": {
+      "hash": "dffecfdc3eddd6070884c741a6e738ce3fadd4466ea9f8e9ef689c543c8237ca",
+      "source": "competencies.json"
+    },
+    "competencies/technical-leadership/index.md": {
+      "hash": "861af00e2f832bfd0ed5cf3e943adabb34a8ddcb6946434ef36ff8cf2f497d14",
+      "source": "competencies.json"
+    },
+    "competencies/engineering-education/index.md": {
+      "hash": "2b08cc5a16a6b7f3dce2b40e1eab22fa308171d86a8026d205fa1f5708bcfdc3",
+      "source": "competencies.json"
+    },
+    "competencies/curriculum-development/index.md": {
+      "hash": "c4d3bea2783785600b8f53e4a379a40ccdf64c6841e3a7c07075ecc784c3ac83",
+      "source": "competencies.json"
+    },
+    "competencies/laboratory-development/index.md": {
+      "hash": "433846aefb316e0d9745056dae43b959eddef735b654eb4b31892e6a55c49b1a",
+      "source": "competencies.json"
+    },
+    "competencies/engineering-research/index.md": {
+      "hash": "58128677b2c8baaa9f729f09a776a736734e9e6fe0c78120d51d3a50d2c7518b",
+      "source": "competencies.json"
+    },
+    "competencies/software-engineering/index.md": {
+      "hash": "4a6f0fc1e95b27b6881baee973b0292129da804fe1c9e88651350ea56317054b",
+      "source": "competencies.json"
+    },
+    "competencies/continuous-integration/index.md": {
+      "hash": "af86d348b084cbbe8963b96eb4bbdc479ff02a90dbbca746b6e79857275ba04e",
+      "source": "competencies.json"
+    },
+    "competencies/computer-vision/index.md": {
+      "hash": "c28631f572329d02d7d5abd0db8119719b7a2b9280d1b686d79841213246c780",
+      "source": "competencies.json"
+    },
+    "competencies/mechanical-design/index.md": {
+      "hash": "baf16698e9a83d4a8f84d2eb27363f9de7d3c11ff02a332cb051a9496874aedf",
+      "source": "competencies.json"
+    },
+    "competencies/engineering-fabrication/index.md": {
+      "hash": "626a8c398c21e15b0f8ce6e5a2c39242e0e11fd04c3775d6dcb5de8e2478d78f",
+      "source": "competencies.json"
+    },
+    "coursework/zane-state-college-cad-105/index.md": {
+      "hash": "a51714e9c166dd0fe71cca665f424a849a7223c6ae9d1380bfcac801560fc85f",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-chm-101/index.md": {
+      "hash": "0189c765f31e069efc46ded19ef6f4b2655fe3786f8f5a2a6d900e2147bbe64c",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-cmt-103/index.md": {
+      "hash": "a290febf63883d2e17658b0175139fa8b9f4ccd33c9efe84e1bac045f1e5dedd",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-egt-109/index.md": {
+      "hash": "db914e11d45dc47e65746331959a8a2c360196eaa8b7989732eb416927599c01",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-egt-295/index.md": {
+      "hash": "b548170ec64c40d19a2219338bae0a8555f579d6cc2a93658bb2bea56e0d0a24",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eng-150/index.md": {
+      "hash": "9069b40a331fee193283a0b844fdce5b7828e2c8d01d4280ca33d9aa58c54c08",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-ids-101/index.md": {
+      "hash": "5b890b1d8385164b8cd5be4b71dff7bf020ee18147e28c919f5726a7dbabed62",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mth-113/index.md": {
+      "hash": "6eb74bbc1d5c2e92472c07fe0dfc7499173bf3d0645199b08e916bc66c61ff45",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-cad-141/index.md": {
+      "hash": "65b4b632a1bcb7dc3f2b5360155e836dbf37512f65ae09dd279962ce3dfd0aa9",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eng-180/index.md": {
+      "hash": "e19a813927976eb5ad7a3108a0f13f5623558177bd0552e406bdeeddd9440817",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mth-124/index.md": {
+      "hash": "459feb5873e24965450fa631be7021023beeb2265a10c86ca04ed3e5ab4c15b6",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-phy-201/index.md": {
+      "hash": "3a7d1b1c969bd7fa0a532a53aff7f5236622173a42feaafbdc995f2ba055fd53",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-pol-101/index.md": {
+      "hash": "2bb898ab87bddd41dc57fdbdae825101d08cb2e048170f027b6982f6c6dd2bee",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-bus-151/index.md": {
+      "hash": "6b85bbb8441ce18eda04dee06a783c6228e05fef9416ec20142609ed3888c857",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-com-261/index.md": {
+      "hash": "68fca75dc5417944c2ef89de0ac0e98cfe09f9c96081bdbee5be7a7fbf33b029",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-met-210/index.md": {
+      "hash": "1d36016d992830276d4fbeb66888ee5d3c0ce30c85913d2f49856909601a7b66",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mth-125/index.md": {
+      "hash": "fc7b15a6e9fa913ff259927024219f447551dcebc15c539edd0b2fd182f125bb",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-phy-202/index.md": {
+      "hash": "dd930540907726eca59be66f8f22d476827d34f8c8b4c831619800354ecb069a",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eeet-1110/index.md": {
+      "hash": "bdfab4cb68f13464ee792fb38e1de29d24c2f7f5aabbe454910a31de0c4cc66c",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-math-2510/index.md": {
+      "hash": "e0166c6e143239f51754eceaedfd641fdd3892aa9f68a833284d543c4bfba2f4",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mech-2100/index.md": {
+      "hash": "c81caed4a5e6a55495620811db739a1ddf81f1413a2bfd492ebba1c248bfac07",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mech-2200/index.md": {
+      "hash": "375fcd9d45608f242bd5406023462cbd7d369467c2fbf0ba39d1bd9341af0af5",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mech-2500/index.md": {
+      "hash": "e1763355993bc53e8f03ca0c37c73e9a87dba1f6bc7de83fc0f53905b0112c45",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eeet-1130/index.md": {
+      "hash": "4e4d2e7c6e170354ed75988847475f1ccdaed4309e5ebf395051ff8eada33fa8",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-engl-2470/index.md": {
+      "hash": "7a6f7c75e3738e26d44feabecaab55eaea6f3b31f900b5bee6ebcecd8494e056",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mech-1200/index.md": {
+      "hash": "3c4276d202af78d1c1faa7f8ce0718d3f28cb3518b973b72786ca47ae0e03ec5",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mech-2300/index.md": {
+      "hash": "1cda436ad67c5fd5c84363becc8b404fb8bd1d9ea48db934dc5ead3b6a065db5",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mech-2400/index.md": {
+      "hash": "24e1e289662d6659f0f27059742ad70737dc6c2612df178c7670524c71e83b6a",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mech-2800/index.md": {
+      "hash": "45aec9cfba0e99928a23b9f536a2791bf4802214839b0ba6557006ea07453c18",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-state-university-engr-1110/index.md": {
+      "hash": "306c0d53e0e3765676fad12077cac5c4aee3bc25cda14e6d76a911b08e3650b9",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-state-university-math-1151/index.md": {
+      "hash": "e05023681819a7f3943d03e92a96ea44954212a09b1dfeabd55aaf389ae116f6",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-state-university-phys-1250/index.md": {
+      "hash": "298a72ce57bf530a8c5e4feb1e7e489a37fc6cf9e81a4c49b4bb19fa7270cfda",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-state-university-engr-1181/index.md": {
+      "hash": "190f5604ea17334e83a6c688699957acd4ba118df92a45dd85212ef11b095666",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-state-university-engr-1120/index.md": {
+      "hash": "ad05502351ed511412bf499e74bcd340792b9bdbb3ee2982ee6e8ab435816915",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-state-university-chem-1250/index.md": {
+      "hash": "ffafaa4f970e48215b29e95adc9f478a5d4d35d222a37d555e87c830f756c87b",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-state-university-engr-1182/index.md": {
+      "hash": "81b5fdf30dc12e795ef127c812b15eb1b1a975286483256d119d6e235a146a80",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-state-university-engr-1221/index.md": {
+      "hash": "4cce255f7b16d2e8b70fd0c6272ff8a491aacc791c47b5b84e5bc4054a718914",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-film-2010/index.md": {
+      "hash": "9a2340c3b500120cf6b27d8bb186c497a225604bcaa6c47b5fdb5c46690d3872",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-hist-1210/index.md": {
+      "hash": "545a02881b3faf10f2ea1b8e50a4e994ed3e27b673849c070cd47bcf7009dbc4",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-hist-1330/index.md": {
+      "hash": "7db12d2010fc01b886baacd4beeaea13f77a71708e6d7bb2cf9786fb56122808",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-phil-1300/index.md": {
+      "hash": "41e6ae6a11ee6d6a4ffe98e11e1fb1b0a12e40fbc0c84c8e86067bc23fdc0bf1",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-bmca-1070/index.md": {
+      "hash": "0d8fa15c86a64800188824d671cfcc17c1b6c78ea28bbcb739548ec9c4e79e49",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eeet-1230/index.md": {
+      "hash": "9c44b8febcc7d26b2bd452e8e20657299ef073fef97308ee50a3d5fd42581ffd",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-engl-2500/index.md": {
+      "hash": "3faeb0a3c2a0e71f84df0cf6d0ce65d9a476cddc060b5851a2a8110facc99131",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-math-2520/index.md": {
+      "hash": "95962284c55f9622167a838ed2825941f06cc52e1f05a0674d434f54605c9871",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eeet-2150/index.md": {
+      "hash": "c0cdfdf9747d79f3fbb717126193bdc03535fb4822e6787a4a0e2cf618bb5fd7",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eeet-2210/index.md": {
+      "hash": "b0407e857863e2986073ca3a8f6ad64a3b541e6a8da77c271774ff932a9bb5b0",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eeet-2450/index.md": {
+      "hash": "03fabda135ab189722eaa874bd8ed626e0c344b62a5f64aa7b86caed1a5fc679",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eeet-2510/index.md": {
+      "hash": "95b15fe436eddacb49cd399dbe6720824bed54cf53fa90784eb9e561bde90fbb",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-phys-2020/index.md": {
+      "hash": "c99812ca92673d35b65e59694cba3ea864c341ab746e1ae6eeb9d4b77d703549",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-ent-316/index.md": {
+      "hash": "09f1a05e5dec713aea92d6d1d009bda53c1cdeeb7bbf4896d2797e18703ada03",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-ent-407/index.md": {
+      "hash": "ebd5ec9d3d6c1b645515d9c2729fe48099a17ea6f79caf840da052232be18a6d",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-sta-301/index.md": {
+      "hash": "e07bf13612edaa0741ab008fda2808a8f5a8adf4870c8af366af20e360c4eeff",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-mech-1300/index.md": {
+      "hash": "0f10e8e0426faa059ac83b4961de1dfc1542d38726a2bf505e7e8dbe49558fb0",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-mth-231/index.md": {
+      "hash": "b7b1e8dea45eea9faec8c19695d7e23520c51336a7d69f1ffcac7c60db9a1e04",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-phy-111/index.md": {
+      "hash": "8da01c1bba71dba55cfce53dcecea6504465e846375673c9b4b83f423ba951a5",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-chem-1010/index.md": {
+      "hash": "3f2051ffbe229d4c2c6a03f7354a3f87f040d9f372c667be9a6cb9873cabbe96",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-ath-390z/index.md": {
+      "hash": "abacd2435d1327468864f85ba88316b35b337aa83e297f0f9aff02bf53be5c7c",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-ent-311/index.md": {
+      "hash": "d69d1784e5d4b42baac214489a66c13bf708ee30808c0656c836758b1f9ad88a",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-ent-401/index.md": {
+      "hash": "0666ff8c52127aecc5eee7b103d26ccfacd61ac3c98a7ea77c5d31e6a35733c5",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-ent-418/index.md": {
+      "hash": "027c9b9ef4009e820262272654166836664b7e84daa32c6330970112755684ea",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-ent-497/index.md": {
+      "hash": "d77215af3e95dff33a12739bc362a0e6b38d29a36e532b7d44403b07f7a0523a",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-ent-402/index.md": {
+      "hash": "0ba01fec585294e1a062fe94430b7eb57fd8c60c4400838f1711f801fa51e493",
+      "source": "coursework.json"
+    },
+    "coursework/miami-university-ent-498/index.md": {
+      "hash": "af4486e693b225b9c22e21f9c63e99025806638d9bd49a90de9134960cad1c04",
+      "source": "coursework.json"
+    },
+    "coursework/university-of-cincinnati-math-2073/index.md": {
+      "hash": "f0e76601d034bbaca9fa52f73b294e59a0d65cae6b5e87538b6d8a484e8f7c8d",
+      "source": "coursework.json"
+    },
+    "coursework/central-ohio-technical-college-mech-202/index.md": {
+      "hash": "d0deb961693026701ececfecf5efb0fcf5071f718bd8267c4a60f136206c2b66",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-5003/index.md": {
+      "hash": "6345e4ea7b7a8a9a6e9b2ca8705ad40bf5fec01c8e14659e2e3bc08fc93d9a17",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-6283/index.md": {
+      "hash": "bae6e07be52791249c40cfd96666b724a4809d6a7f5433c67c607834d5608861",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-alte-1800/index.md": {
+      "hash": "cc1960ef61001725e68407cfbc1d5ba483ab00a86dcd179fe20cd0bf24c426fb",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-alte-2200/index.md": {
+      "hash": "bc02c75e75fc9e89ac1b7bba8ca215a8470a4bf9aeecb2cb986f877371c3a756",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-6033/index.md": {
+      "hash": "05e2acfdf35e5615e021e8eb6732b3ab683125ca4aef71f7c1320a086980024d",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-5673/index.md": {
+      "hash": "8564e70fb64cb69b361456f8a750961777f1d20ea28e6fe5b5973ca837fa579f",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-5403/index.md": {
+      "hash": "61b2550fa4b1228697548c3f73b9b4b46bdcd82173f67937ac7fec4fd33f9337",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-6053/index.md": {
+      "hash": "88720bb402c9b056b85396e1bc60f5f4517acd4fffab3720dce57246badc0588",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-6063/index.md": {
+      "hash": "fecf064091bd751be300ec2d7bb9422247a23cfce0f1750e60577b2704aa7905",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-6103/index.md": {
+      "hash": "8643e3249d7a9867b93b6ad3374a2d55af99207141a30895262fc3f80e249727",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-5313/index.md": {
+      "hash": "b170a2d0dbe9ae3248f1bb9213d88df393e5a1d6abe1ea97449a25ca3527f45a",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-5853/index.md": {
+      "hash": "f6afafe50c90ad058319e4a7baeaf23434c5616a36aad79609c049891d249c88",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-ee-5713/index.md": {
+      "hash": "d892b17587ff61f1b1df149614f57e80a82629e333325fa01b3b962d87ec6433",
+      "source": "coursework.json"
+    },
+    "coursework/ohio-university-emgt-6010/index.md": {
+      "hash": "f8ac7b79793f0a65b5d9317e9d74da93638e7e1fa8bd9ed6431562ca764c2fd1",
+      "source": "coursework.json"
+    },
+    "coursework/zane-state-college-eeet-2600/index.md": {
+      "hash": "956d9dbca750902f262322ee5c0cb79870397b756488cc8c5e92403778f09a52",
+      "source": "coursework.json"
+    },
+    "employers/ohio-state-university/index.md": {
+      "hash": "b31acc0c81854a318e6fb2781bb62a67ee22d44410bc31dd628805a86e70714e",
+      "source": "employers.json"
+    },
+    "employers/amg-vanadium/index.md": {
+      "hash": "c273117ea41f23d5a48aea6ba55a3ddb5679a4de124af1477d66e45c5588f3fe",
+      "source": "employers.json"
+    },
+    "positions/ohio-state-university-student-tech-support-specialist/index.md": {
+      "hash": "54418a314456bb0e76bf9dc2ce81423d566d887d44b2b6355797831772ee4f78",
+      "source": "employment.json"
+    },
+    "positions/amg-vanadium-drafting-technician-intern/index.md": {
+      "hash": "fe958c023e33397ffc6415613c92a4f6201227a1be3fcc580111c28eb1650f1c",
+      "source": "employment.json"
+    },
+    "positions/zane-state-college-adjunct-faculty/index.md": {
+      "hash": "23f3b8c156ab600581f23312cfccf4e60aa228cd11e71baca14810bf7af0e0b7",
+      "source": "employment.json"
+    },
+    "positions/zane-state-college-instructor/index.md": {
+      "hash": "a1bf3dd026175160e28f6eefdd7a2aeaf4dacaa5bbcc2be0ee908beb5d60e6a6",
+      "source": "employment.json"
+    },
+    "positions/zane-state-college-assistant-professor-program-director/index.md": {
+      "hash": "b7423e8dfb6c4958a5e57f13c875a1656ffde0ec2c00fc6fa7200e61e6a8a7bc",
+      "source": "employment.json"
+    },
+    "positions/boeing-systems-engineer/index.md": {
+      "hash": "00c4ef878cdf812f6b224fcd84af99c2625100462557430f8b35d33dc0ea66a3",
+      "source": "employment.json"
+    },
+    "projects/gyro-balancer-test-station/index.md": {
+      "hash": "40473433e19416f6b7645240267eff5d0ce2e2cafa8da57ae151ac06e34331d8",
+      "source": "projects.json"
+    },
+    "projects/drift-test-station/index.md": {
+      "hash": "91dbb62ceef6891b240bfac291a8e576043b02d973918009ef2305b85bcc90cf",
+      "source": "projects.json"
+    },
+    "projects/impedance-test-station/index.md": {
+      "hash": "b0113d5156643336833910042ad9e3b92a22b27a1e24cb1b7838b29c7458e482",
+      "source": "projects.json"
+    },
+    "projects/utility-mapping-inventory-system/index.md": {
+      "hash": "2751b49df11fa6836b9d1da877917b4fd0079e718f8fa090e245f98c590a7ecc",
+      "source": "projects.json"
+    },
+    "projects/robotics-course-laboratory-overhaul/index.md": {
+      "hash": "be42214b7b98387fc03e8213a251b35650f9edc69ad7b0072b2fa7ab5aeeff72",
+      "source": "projects.json"
+    },
+    "projects/course-hybridization-virtualization/index.md": {
+      "hash": "68bed0f2ecb5ca1b2c5848f68801695bae89e525ecda4b72c44364c6f2018fa8",
+      "source": "projects.json"
+    },
+    "projects/engineering-technology-capstone-program/index.md": {
+      "hash": "c0df87da8f0b22fed824496b5bae228de16755c66301c6e9971ec05f061ed787",
+      "source": "projects.json"
+    },
+    "projects/industrial-iot-monitoring-system/index.md": {
+      "hash": "8ac8f574421a48ad4f8cf80c2aed94ae6c7c6c91411c6a8be39ce7143355e045",
+      "source": "projects.json"
+    },
+    "projects/advanced-energy-vehicle/index.md": {
+      "hash": "4fa87578429a3fe8b94995aec873fbeff965b9bbc94a1657312022b35a81b916",
+      "source": "projects.json"
+    },
+    "projects/rv-2sq-robotic-welding-attachment/index.md": {
+      "hash": "99104a8a8db420da4d557879196cfef9be51234e9b3f9a3674f5faec89e4f29d",
+      "source": "projects.json"
+    },
+    "projects/navigation-gps-ins-engineering/index.md": {
+      "hash": "ff0da9128fa056c684c229b3695bfa65bd8ad3ff61e174296d2e07d933c245c5",
+      "source": "projects.json"
+    },
+    "projects/cpp-sensor-processing-ci/index.md": {
+      "hash": "c153e295d5a72ef14e472cb6cc2593648a31a069c75a4301d26dcfe3239caebb",
+      "source": "projects.json"
+    },
+    "projects/trading-card-cataloging-recognition-system/index.md": {
+      "hash": "2aa72fda35566025f23b2ca61e8412ee4921ece82596777f1170f3fb6cdf3911",
+      "source": "projects.json"
+    },
+    "projects/custom-aquarium-stand-sump-system/index.md": {
+      "hash": "5faf1b2d1aec71c9b85995a73496161a540506e1eff1b95e874c10ad67e99e11",
+      "source": "projects.json"
+    },
+    "projects/modular-circuit-handbook/index.md": {
+      "hash": "abf0d6dcdbaf411c00c72431f0bb6243b4627c13041a43d7025cf5345ef04633",
+      "source": "projects.json"
+    },
+    "projects/engineering-reference-website/index.md": {
+      "hash": "8ec657f1b8c4c0c4e84b55c0c605b25485c665de426d79483b5ddf584c986de7",
+      "source": "projects.json"
+    },
+    "software/matlab/index.md": {
+      "hash": "b9adf4399f81e20b470f1b157cc0dea9244703ac3d7774e1ebaf6b68eb5406f1",
+      "source": "software.json"
+    },
+    "software/simulink/index.md": {
+      "hash": "cb1d9931402073f2ebe0025136d1330f7ab112087bf2b645fb48cf74ae1de867",
+      "source": "software.json"
+    },
+    "software/fusion-360/index.md": {
+      "hash": "4708d9add3d8c353d6bf691d032e038990fcc53d36f0bb25c267001434a890ab",
+      "source": "software.json"
+    },
+    "software/autocad/index.md": {
+      "hash": "b3080aec91572269f100562a0246a8bd9928f2df5c7b1931d26a211f9f5721c9",
+      "source": "software.json"
+    },
+    "software/kicad/index.md": {
+      "hash": "21396f6607a317871eb0993954c0ab69c9022aed9538c087ffb480850ec7d1e2",
+      "source": "software.json"
+    },
+    "software/ni-labview/index.md": {
+      "hash": "e5086eab2d6566f4a8b608aea451149a75726bb1ad8bd1b5fbb4870c8cdec846",
+      "source": "software.json"
+    },
+    "software/ni-daq/index.md": {
+      "hash": "3ef1bf4963ecaa8baf673523708263c2a1f563979ccb1e8a7e342d31b37364f9",
+      "source": "software.json"
+    },
+    "software/3dexperience/index.md": {
+      "hash": "34c6e4a6188a505483c26659677aeee74e170061deebff2024ec5b81530d74d4",
+      "source": "software.json"
+    },
+    "software/enovia/index.md": {
+      "hash": "1ae06fcd5837f3e81116128fd23b049a6b8a8b50f87f4bf27d67f58f7947a707",
+      "source": "software.json"
+    },
+    "software/cameo-systems-modeler/index.md": {
+      "hash": "c02407fea877671d8f49631a612b7bf20a79202c0ba1d1670eb8f2414087637a",
+      "source": "software.json"
+    },
+    "software/c/index.md": {
+      "hash": "90b4874dcc0b2d0b085f8d70b55e79a94b4e706b37c6d2a2e6a4d41394e34069",
+      "source": "software.json"
+    },
+    "software/cpp/index.md": {
+      "hash": "37aa8866e1063800878d6b7bae087793152c06ea3b4b075592b20b0d98911c49",
+      "source": "software.json"
+    },
+    "software/python/index.md": {
+      "hash": "0205c2f15438f1cb84770034830a81f838b8ebef55cac071662dcf42d39b39ca",
+      "source": "software.json"
+    },
+    "software/git/index.md": {
+      "hash": "cf6a3cfd2f306f50a8328ac6be479ffc4a57f355b4d0dd42ce51a7ddfb9cf77a",
+      "source": "software.json"
+    },
+    "software/github/index.md": {
+      "hash": "d26d22b1e285d484811f55f68cfd4dc4782f07d2226859be3f7422474f96b9ee",
+      "source": "software.json"
+    },
+    "software/gitlab/index.md": {
+      "hash": "aacdbdcc022d621c1c7c6d482279137466dc56ded01282aedc01a32c54aee7b3",
+      "source": "software.json"
+    },
+    "software/gitlab-ci-cd/index.md": {
+      "hash": "0bf58754921a0788fc2d93b13a10e556d917b8fdab2e5761df9a23c3aaae9a7d",
+      "source": "software.json"
+    },
+    "software/platformio/index.md": {
+      "hash": "5808428f95134808813afa0195b770112cbf70dfe3943ec6999248e2447b5a5b",
+      "source": "software.json"
+    },
+    "software/unity-test-framework/index.md": {
+      "hash": "1f3b733fed097b137ac22800d9f845bdd0771b3111fa704f69303fd9d080a97f",
+      "source": "software.json"
+    },
+    "software/visual-studio-code/index.md": {
+      "hash": "7fc822eea0cc4b04d424cf3b4a8c1bb70870477093e3a034ac33d4c3ab1dbd89",
+      "source": "software.json"
+    },
+    "software/nodejs/index.md": {
+      "hash": "b47cfebd76cb18f9e2238e9e39fede7dabb8e84aa980dcdd6269c697a040b80c",
+      "source": "software.json"
+    },
+    "software/eleventy/index.md": {
+      "hash": "58693a583c5c067b067fdd6d98a9a508c20f9e7672ae05418845a18c776b62fd",
+      "source": "software.json"
+    },
+    "software/nunjucks/index.md": {
+      "hash": "ea20721a7a9bc836c784d950d3f64994a4edbda1a74c80a4953087cca7d2da12",
+      "source": "software.json"
+    },
+    "software/html/index.md": {
+      "hash": "33bd32c2041da6e630f83079339fc6aa9cb7c9778873c2c5ea53517454228f3d",
+      "source": "software.json"
+    },
+    "software/css/index.md": {
+      "hash": "ea68e2f32eeb61601eaf0bbf946d439bdcfaa68ef4f374fa5f4fcb0b27945e5b",
+      "source": "software.json"
+    },
+    "software/javascript/index.md": {
+      "hash": "0ce1f072ca6f7919bc680dcdf5516403d45f57ecc5c25c3d11e92dcae0ccde50",
+      "source": "software.json"
+    },
+    "standards/mil-std-461/index.md": {
+      "hash": "ead5c5752f7021338de2fb87622013a76cfd735770c994011ce7926c85895542",
+      "source": "standards.json"
+    },
+    "standards/nfpa-70/index.md": {
+      "hash": "33d09083baf890cf22b807ee5a89d68ff5630551353e80baf8caade27aaafed7",
+      "source": "standards.json"
+    },
+    "standards/nfpa-79/index.md": {
+      "hash": "3c4724c0e16175c5e75e80ccad94971d6d5a1bf0b5c4c28153256ff9865dd2e9",
+      "source": "standards.json"
+    },
+    "standards/abet-etac/index.md": {
+      "hash": "d12e2b9f262313ed5f996353ee507bca03e4330430af0669446a8d2141b39257",
+      "source": "standards.json"
+    },
+    "standards/sysml/index.md": {
+      "hash": "82c69a50d2fd5404fdac1084df5ffa5ef23d0173bd9eb0f0c7a363bd906ce7cf",
+      "source": "standards.json"
+    }
+  }
+}

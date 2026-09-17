@@ -1,5 +1,6 @@
 const fs = require("node:fs/promises");
 const path = require("node:path");
+const crypto = require("node:crypto");
 const { spawnSync } = require("node:child_process");
 
 
@@ -18,6 +19,11 @@ const IMPORT_DIRECTORY = path.join(
     ROOT_DIRECTORY,
     "data",
     "imports"
+);
+
+const MANIFEST_PATH = path.join(
+    IMPORT_DIRECTORY,
+    ".import-manifest.json"
 );
 
 const VALIDATOR = path.join(
@@ -82,10 +88,127 @@ function buildListField(name, values) {
     }
 
     const items = values
-        .map((value) => `  - ${yamlScalar(value)}`)
+        .map(
+            (value) =>
+                `  - ${yamlScalar(value)}`
+        )
         .join("\n");
 
     return `${name}:\n${items}\n`;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Hash Utilities                                                             */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * The manifest stores the SHA-256 hash of the exact canonical Markdown
+ * content last written by this importer.
+ *
+ * This lets the importer distinguish between:
+ *
+ *   1. A file that still exactly matches the last importer-generated state.
+ *      That file can be updated safely.
+ *
+ *   2. A file that has changed since the importer last wrote it.
+ *      That file may contain manual edits and must not be overwritten.
+ */
+
+function hashContent(content) {
+    return crypto
+        .createHash("sha256")
+        .update(content, "utf8")
+        .digest("hex");
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Import Manifest                                                            */
+/* -------------------------------------------------------------------------- */
+
+function createEmptyManifest() {
+    return {
+        version: 1,
+        files: {}
+    };
+}
+
+
+async function loadManifest() {
+    let raw;
+
+    try {
+        raw = await fs.readFile(
+            MANIFEST_PATH,
+            "utf8"
+        );
+    } catch (error) {
+        if (error.code === "ENOENT") {
+            return createEmptyManifest();
+        }
+
+        throw error;
+    }
+
+    let manifest;
+
+    try {
+        manifest = JSON.parse(raw);
+    } catch (error) {
+        throw new Error(
+            `.import-manifest.json is invalid JSON: ${error.message}`
+        );
+    }
+
+    if (
+        !manifest ||
+        typeof manifest !== "object" ||
+        Array.isArray(manifest)
+    ) {
+        throw new Error(
+            ".import-manifest.json must contain an object."
+        );
+    }
+
+    if (manifest.version !== 1) {
+        throw new Error(
+            `.import-manifest.json uses unsupported version ` +
+            `"${manifest.version}".`
+        );
+    }
+
+    if (
+        !manifest.files ||
+        typeof manifest.files !== "object" ||
+        Array.isArray(manifest.files)
+    ) {
+        throw new Error(
+            ".import-manifest.json is missing a valid files object."
+        );
+    }
+
+    return manifest;
+}
+
+
+async function saveManifest(manifest) {
+    const output =
+        `${JSON.stringify(manifest, null, 2)}\n`;
+
+    await fs.writeFile(
+        MANIFEST_PATH,
+        output,
+        "utf8"
+    );
+}
+
+
+function getManifestKey(
+    collection,
+    id
+) {
+    return `${collection}/${id}/index.md`;
 }
 
 
@@ -117,7 +240,8 @@ async function loadImportFiles() {
         .filter(
             (entry) =>
                 entry.isFile() &&
-                entry.name.toLowerCase().endsWith(".json")
+                entry.name.toLowerCase().endsWith(".json") &&
+                entry.name !== ".import-manifest.json"
         )
         .map((entry) => entry.name)
         .sort();
@@ -210,7 +334,10 @@ function validateImportFile(
 
     const ids = new Set();
 
-    for (const [index, item] of group.items.entries()) {
+    for (
+        const [index, item]
+        of group.items.entries()
+    ) {
         if (
             !item ||
             typeof item !== "object" ||
@@ -257,29 +384,25 @@ function validateImportFile(
 /*
  * These fields are emitted first and in a predictable order.
  *
- * Keeping deterministic ordering makes generated Markdown easy to review
- * and keeps restart-safety meaningful.
+ * Deterministic output makes generated Markdown easy to review and allows
+ * hashes in the import manifest to reliably represent generated state.
  */
+
 const FIELD_ORDER = [
     "institution",
     "location",
-
     "credential_type",
     "study_type",
     "field",
     "concentration",
-
     "code",
     "credits",
     "term",
-
     "start",
     "end",
-
     "employer",
     "position",
     "study",
-
     "credentials",
     "competencies",
     "software",
@@ -292,6 +415,7 @@ const FIELD_ORDER = [
  * Properties used by the importer itself rather than written as ordinary
  * front-matter fields.
  */
+
 const RESERVED_FIELDS = new Set([
     "id",
     "title",
@@ -370,11 +494,12 @@ function buildMarkdown(
     /* ---------------------------------------------------------------------- */
 
     /*
-     * This is what makes the importer content-agnostic.
+     * The importer remains content-agnostic.
      *
-     * A future entity can introduce a simple scalar or list field in its JSON
-     * import data without requiring another hard-coded branch in this script.
+     * A future entity can introduce a simple scalar or list field in its
+     * import JSON without requiring another hard-coded branch here.
      */
+
     const additionalFields =
         Object.keys(item)
             .filter(
@@ -431,7 +556,8 @@ async function ensureDirectory(directory) {
 
 async function importEntity(
     group,
-    item
+    item,
+    manifest
 ) {
     const directory = path.join(
         SRC_DIRECTORY,
@@ -444,6 +570,12 @@ async function importEntity(
         "index.md"
     );
 
+    const manifestKey =
+        getManifestKey(
+            group.collection,
+            item.id
+        );
+
     const expectedContent =
         buildMarkdown(
             group.collection,
@@ -451,26 +583,79 @@ async function importEntity(
             item
         );
 
+    const expectedHash =
+        hashContent(expectedContent);
+
     await ensureDirectory(directory);
 
+    let existingContent;
+
     try {
-        const existingContent =
+        existingContent =
             await fs.readFile(
                 filePath,
                 "utf8"
             );
-
-        if (
-            existingContent ===
-            expectedContent
-        ) {
-            console.log(
-                `Unchanged: ${group.collection}/${item.id}`
-            );
-
-            return "unchanged";
+    } catch (error) {
+        if (error.code !== "ENOENT") {
+            throw error;
         }
 
+        await fs.writeFile(
+            filePath,
+            expectedContent,
+            "utf8"
+        );
+
+        manifest.files[manifestKey] = {
+            hash: expectedHash,
+            source: group.fileName
+        };
+
+        console.log(
+            `Created:   ${group.collection}/${item.id}`
+        );
+
+        return "created";
+    }
+
+
+    /*
+     * Exact match.
+     *
+     * This is safe regardless of whether the file was previously recorded
+     * in the manifest because the canonical file already equals the current
+     * deterministic import output.
+     *
+     * This also bootstraps existing importer-generated files into the new
+     * manifest without requiring a destructive migration.
+     */
+
+    if (existingContent === expectedContent) {
+        manifest.files[manifestKey] = {
+            hash: expectedHash,
+            source: group.fileName
+        };
+
+        console.log(
+            `Unchanged: ${group.collection}/${item.id}`
+        );
+
+        return "unchanged";
+    }
+
+
+    /*
+     * Different file with no manifest record.
+     *
+     * We cannot prove who created or modified it, so preserve the existing
+     * canonical file and report a conflict.
+     */
+
+    const manifestEntry =
+        manifest.files[manifestKey];
+
+    if (!manifestEntry) {
         console.error(
             `Conflict: ${group.collection}/${item.id}`
         );
@@ -484,16 +669,53 @@ async function importEntity(
         );
 
         console.error(
+            "  No previous importer state exists for this file."
+        );
+
+        console.error(
             "  Refusing to overwrite canonical content."
         );
 
         return "conflict";
-
-    } catch (error) {
-        if (error.code !== "ENOENT") {
-            throw error;
-        }
     }
+
+
+    /*
+     * A manifest record exists.
+     *
+     * Compare the current canonical file against the exact content hash
+     * recorded the last time the importer managed it.
+     */
+
+    const existingHash =
+        hashContent(existingContent);
+
+    if (existingHash !== manifestEntry.hash) {
+        console.error(
+            `Conflict: ${group.collection}/${item.id}`
+        );
+
+        console.error(
+            `  Source: ${group.fileName}`
+        );
+
+        console.error(
+            "  Canonical content has changed since the importer last wrote it."
+        );
+
+        console.error(
+            "  Refusing to overwrite possible manual edits."
+        );
+
+        return "conflict";
+    }
+
+
+    /*
+     * The canonical file still matches the last importer-generated state.
+     *
+     * The import data has changed, so updating the canonical file is safe.
+     */
 
     await fs.writeFile(
         filePath,
@@ -501,11 +723,16 @@ async function importEntity(
         "utf8"
     );
 
+    manifest.files[manifestKey] = {
+        hash: expectedHash,
+        source: group.fileName
+    };
+
     console.log(
-        `Created:   ${group.collection}/${item.id}`
+        `Updated:   ${group.collection}/${item.id}`
     );
 
-    return "created";
+    return "updated";
 }
 
 
@@ -547,7 +774,11 @@ async function main() {
     const groups =
         await loadImportFiles();
 
+    const manifest =
+        await loadManifest();
+
     let created = 0;
+    let updated = 0;
     let unchanged = 0;
     let conflicts = 0;
 
@@ -560,11 +791,16 @@ async function main() {
             const result =
                 await importEntity(
                     group,
-                    item
+                    item,
+                    manifest
                 );
 
             if (result === "created") {
                 created += 1;
+            }
+
+            if (result === "updated") {
+                updated += 1;
             }
 
             if (result === "unchanged") {
@@ -584,8 +820,19 @@ async function main() {
     );
 
     console.log(
+        `Updated ${updated} entities.`
+    );
+
+    console.log(
         `Unchanged ${unchanged} entities.`
     );
+
+    /*
+     * Do not save new manifest state when any conflict exists.
+     *
+     * This keeps a failed import from partially advancing the persisted
+     * importer state.
+     */
 
     if (conflicts > 0) {
         console.error(
@@ -609,12 +856,22 @@ async function main() {
             "\nImport completed, but content validation failed."
         );
 
+        console.error(
+            "The import manifest was not updated."
+        );
+
         process.exitCode = 1;
         return;
     }
 
+    await saveManifest(manifest);
+
     console.log(
-        "\nImport completed successfully."
+        "\nImport manifest updated."
+    );
+
+    console.log(
+        "Import completed successfully."
     );
 }
 
