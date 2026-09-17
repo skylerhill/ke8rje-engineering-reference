@@ -1,0 +1,221 @@
+{
+  "collection": "competencies",
+  "entity": "competency",
+  "items": [
+    {
+      "id": "systems-engineering",
+      "title": "Systems Engineering",
+      "description": "Engineering of complex systems across requirements, architecture, interfaces, integration, verification, validation, lifecycle considerations, and multidisciplinary coordination."
+    },
+    {
+      "id": "requirements-engineering",
+      "title": "Requirements Engineering",
+      "description": "Development, analysis, decomposition, traceability, and verification of engineering requirements."
+    },
+    {
+      "id": "verification-validation",
+      "title": "Verification & Validation",
+      "description": "Planning and execution of engineering verification and validation activities to demonstrate that systems and designs satisfy defined requirements and intended functions."
+    },
+    {
+      "id": "systems-integration",
+      "title": "Systems Integration",
+      "description": "Integration of electrical, electronic, mechanical, software, instrumentation, and control elements into functioning engineering systems."
+    },
+    {
+      "id": "electrical-engineering",
+      "title": "Electrical Engineering",
+      "description": "Analysis and design of electrical and electronic systems using circuit theory, electronics, instrumentation, controls, power, signals, and related engineering principles."
+    },
+    {
+      "id": "electrical-design",
+      "title": "Electrical Design",
+      "description": "Development of electrical architectures, circuits, interfaces, schematics, component selections, and implementation documentation."
+    },
+    {
+      "id": "circuit-analysis",
+      "title": "Circuit Analysis",
+      "description": "Analysis of electrical circuits using fundamental DC, AC, transient, frequency-domain, and network principles."
+    },
+    {
+      "id": "analog-electronics",
+      "title": "Analog Electronics",
+      "description": "Analysis and design of analog electronic circuits including amplification, filtering, signal conditioning, references, and interface circuitry."
+    },
+    {
+      "id": "digital-electronics",
+      "title": "Digital Electronics",
+      "description": "Analysis and application of digital logic, digital interfaces, and digital electronic systems."
+    },
+    {
+      "id": "signal-conditioning",
+      "title": "Signal Conditioning",
+      "description": "Design and analysis of circuitry used to scale, filter, buffer, isolate, protect, and otherwise prepare electrical signals for measurement or downstream processing."
+    },
+    {
+      "id": "instrumentation-measurement",
+      "title": "Instrumentation & Measurement",
+      "description": "Selection, integration, and application of sensors, instrumentation, data-acquisition hardware, and measurement techniques."
+    },
+    {
+      "id": "test-engineering",
+      "title": "Test Engineering",
+      "description": "Development and application of test systems, test methods, procedures, instrumentation, fixtures, and analysis used to evaluate engineering hardware and systems."
+    },
+    {
+      "id": "automated-test-equipment",
+      "title": "Automated Test Equipment",
+      "description": "Engineering of automated systems that stimulate, measure, control, and evaluate electrical or electromechanical equipment."
+    },
+    {
+      "id": "troubleshooting-root-cause-analysis",
+      "title": "Troubleshooting & Root Cause Analysis",
+      "description": "Systematic isolation, diagnosis, and resolution of faults in electrical, electronic, software, instrumentation, and integrated engineering systems."
+    },
+    {
+      "id": "reverse-engineering",
+      "title": "Reverse Engineering",
+      "description": "Reconstruction and analysis of existing systems, circuits, interfaces, and behavior when modernizing or documenting legacy equipment."
+    },
+    {
+      "id": "controls-engineering",
+      "title": "Controls Engineering",
+      "description": "Analysis and implementation of feedback, state-space, industrial, and electromechanical control systems."
+    },
+    {
+      "id": "industrial-automation",
+      "title": "Industrial Automation",
+      "description": "Application of controllers, sensors, actuators, industrial communications, robotics, and automated equipment to industrial systems."
+    },
+    {
+      "id": "programmable-logic-controllers",
+      "title": "Programmable Logic Controllers",
+      "description": "Programming, integration, troubleshooting, and application of PLC-based industrial control systems."
+    },
+    {
+      "id": "robotics",
+      "title": "Robotics",
+      "description": "Engineering and application of robotic systems including motion, control, programming, integration, tooling, and industrial automation."
+    },
+    {
+      "id": "electric-machines",
+      "title": "Electric Machines",
+      "description": "Analysis and application of motors, generators, transformers, motor controls, and related electromechanical energy-conversion systems."
+    },
+    {
+      "id": "embedded-systems",
+      "title": "Embedded Systems",
+      "description": "Development and integration of microcontroller-based hardware and software for sensing, control, communications, and real-time engineering applications."
+    },
+    {
+      "id": "sensor-systems",
+      "title": "Sensor Systems",
+      "description": "Selection, integration, calibration, and application of sensors and associated interfaces for engineering measurement and monitoring."
+    },
+    {
+      "id": "data-acquisition",
+      "title": "Data Acquisition",
+      "description": "Acquisition, conditioning, digitization, processing, and analysis of measured engineering signals."
+    },
+    {
+      "id": "industrial-internet-of-things",
+      "title": "Industrial Internet of Things",
+      "description": "Application of networked sensors, embedded systems, wireless communications, and data collection to industrial monitoring and engineering systems."
+    },
+    {
+      "id": "wireless-communications",
+      "title": "Wireless Communications",
+      "description": "Engineering and application of wireless communication links, embedded radios, link behavior, and communication-system integration."
+    },
+    {
+      "id": "navigation-systems",
+      "title": "Navigation Systems",
+      "description": "Engineering of positioning and navigation systems using satellite, inertial, electronic, and integrated navigation techniques."
+    },
+    {
+      "id": "inertial-navigation",
+      "title": "Inertial Navigation",
+      "description": "Analysis and application of inertial sensors, inertial navigation systems, error behavior, and navigation-state estimation."
+    },
+    {
+      "id": "satellite-navigation",
+      "title": "Satellite Navigation",
+      "description": "Analysis and application of satellite-based positioning, navigation, and timing systems."
+    },
+    {
+      "id": "integrated-navigation",
+      "title": "Integrated Navigation",
+      "description": "Integration of multiple navigation and sensor sources to improve positioning, navigation, and state-estimation performance."
+    },
+    {
+      "id": "cad-engineering-drafting",
+      "title": "CAD & Engineering Drafting",
+      "description": "Creation and interpretation of engineering drawings, models, layouts, schematics, and technical design documentation using computer-aided design tools."
+    },
+    {
+      "id": "engineering-documentation",
+      "title": "Engineering Documentation",
+      "description": "Development and maintenance of technical drawings, specifications, procedures, reports, design records, and other controlled engineering information."
+    },
+    {
+      "id": "configuration-management",
+      "title": "Configuration Management",
+      "description": "Control and documentation of engineering baselines, revisions, changes, interfaces, and product configuration information."
+    },
+    {
+      "id": "engineering-project-management",
+      "title": "Engineering Project Management",
+      "description": "Planning and coordination of engineering scope, schedules, technical work, resources, risks, reviews, and deliverables."
+    },
+    {
+      "id": "technical-leadership",
+      "title": "Technical Leadership",
+      "description": "Technical coordination, mentoring, design review, engineering decision support, and leadership of multidisciplinary technical activities."
+    },
+    {
+      "id": "engineering-education",
+      "title": "Engineering Education",
+      "description": "Development and delivery of engineering and engineering-technology instruction, laboratories, assessments, and hands-on technical learning experiences."
+    },
+    {
+      "id": "curriculum-development",
+      "title": "Curriculum Development",
+      "description": "Design, assessment, revision, and implementation of technical curricula, courses, laboratories, and learning outcomes."
+    },
+    {
+      "id": "laboratory-development",
+      "title": "Laboratory Development",
+      "description": "Planning, design, equipment selection, implementation, and continuous improvement of engineering and technical laboratory environments."
+    },
+    {
+      "id": "engineering-research",
+      "title": "Engineering Research",
+      "description": "Structured investigation, experimentation, analysis, documentation, and communication of engineering research questions and results."
+    },
+    {
+      "id": "software-engineering",
+      "title": "Software Engineering",
+      "description": "Structured development, testing, documentation, maintenance, and configuration of software used in engineering applications."
+    },
+    {
+      "id": "continuous-integration",
+      "title": "Continuous Integration",
+      "description": "Automated software build, test, validation, and integration workflows used to maintain code quality and reproducibility."
+    },
+    {
+      "id": "computer-vision",
+      "title": "Computer Vision",
+      "description": "Processing and analysis of digital images for automated detection, recognition, classification, measurement, and related applications."
+    },
+    {
+      "id": "mechanical-design",
+      "title": "Mechanical Design",
+      "description": "Design and analysis of mechanical structures, components, assemblies, interfaces, materials, and fabrication considerations."
+    },
+    {
+      "id": "engineering-fabrication",
+      "title": "Engineering Fabrication",
+      "description": "Translation of engineering designs into physical assemblies through manufacturing, machining, woodworking, additive manufacturing, assembly, and related fabrication processes."
+    }
+  ]
+}

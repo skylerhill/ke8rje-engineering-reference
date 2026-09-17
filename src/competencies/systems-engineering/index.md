@@ -7,4 +7,4 @@ id: systems-engineering
 entity: competency
 ---
 
-Systems engineering competency encompassing the interdisciplinary processes used to define, develop, integrate, verify, and manage complex systems throughout their lifecycle.
+Engineering of complex systems across requirements, architecture, interfaces, integration, verification, validation, lifecycle considerations, and multidisciplinary coordination.
