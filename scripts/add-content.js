@@ -3,6 +3,7 @@ const path = require("node:path");
 const readline = require("node:readline/promises");
 const { stdin: input, stdout: output } = require("node:process");
 
+
 /*
  * Engineering Reference Content Generator
  *
@@ -25,6 +26,7 @@ const CONTENT_TYPES = [
     "Competency",
     "Institution",
     "Academic Credential",
+    "Non-Degree Study",
     "Coursework",
     "Software",
     "Standard",
@@ -56,6 +58,23 @@ function requireValue(value, fieldName) {
     }
 
     return trimmed;
+}
+
+
+function yamlScalar(value) {
+    const stringValue = String(value);
+
+    if (
+        stringValue === "" ||
+        /^\s|\s$/.test(stringValue) ||
+        /[:#\[\]{},&*!|>'"%@`]/.test(stringValue) ||
+        /^(?:null|true|false|yes|no|on|off|~)$/i.test(stringValue) ||
+        /^[-+]?(?:\d+\.?\d*|\.\d+)$/.test(stringValue)
+    ) {
+        return JSON.stringify(stringValue);
+    }
+
+    return stringValue;
 }
 
 
@@ -106,7 +125,21 @@ async function getEntityTitle(directory, id) {
         );
     }
 
-    return titleMatch[1].trim();
+    let title = titleMatch[1].trim();
+
+    /*
+     * Titles may be quoted by yamlScalar(). Remove simple JSON-style
+     * quoting before displaying them in the interactive selector.
+     */
+    if (title.startsWith("\"") && title.endsWith("\"")) {
+        try {
+            title = JSON.parse(title);
+        } catch {
+            // Leave the original title intact if parsing fails.
+        }
+    }
+
+    return title;
 }
 
 
@@ -240,6 +273,53 @@ async function selectOne(
 }
 
 
+async function selectOptionalOne(
+    rl,
+    prompt,
+    entities
+) {
+    if (entities.length === 0) {
+        return "";
+    }
+
+    console.log(`\n${prompt}\n`);
+    console.log("0. None");
+
+    entities.forEach(
+        (entity, index) => {
+            console.log(
+                `${index + 1}. ${entity.title}`
+            );
+        }
+    );
+
+    const answer = await rl.question(
+        "\nSelect an item: "
+    );
+
+    const selection = Number.parseInt(
+        answer.trim(),
+        10
+    );
+
+    if (selection === 0) {
+        return "";
+    }
+
+    if (
+        !Number.isInteger(selection) ||
+        selection < 1 ||
+        selection > entities.length
+    ) {
+        throw new Error(
+            "Invalid selection."
+        );
+    }
+
+    return entities[selection - 1].id;
+}
+
+
 async function selectMany(
     rl,
     prompt,
@@ -333,7 +413,7 @@ function buildOptionalField(
         return "";
     }
 
-    return `\n${name}: ${value.trim()}`;
+    return `\n${name}: ${yamlScalar(value.trim())}`;
 }
 
 
@@ -352,7 +432,7 @@ async function createEmployer(rl) {
     const id = slugify(title);
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /employers/${id}/
 
@@ -401,7 +481,7 @@ async function createPosition(rl) {
     );
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /positions/${id}/
 
@@ -435,14 +515,32 @@ async function createProject(rl) {
 
     const id = slugify(title);
 
+    /*
+     * Projects can be professional, academic, or independent.
+     *
+     * Professional projects may reference a position.
+     * Academic projects may reference an institution.
+     * Independent projects may reference neither.
+     */
     const positions =
         await getEntities("positions");
 
-    const positionId = await selectOne(
-        rl,
-        "Which position does this project belong to?",
-        positions
-    );
+    const positionId =
+        await selectOptionalOne(
+            rl,
+            "Professional position associated with this project (optional):",
+            positions
+        );
+
+    const institutions =
+        await getEntities("institutions");
+
+    const institutionId =
+        await selectOptionalOne(
+            rl,
+            "Academic institution associated with this project (optional):",
+            institutions
+        );
 
     const competencies =
         await getEntities("competencies");
@@ -474,16 +572,23 @@ async function createProject(rl) {
             standards
         );
 
+    const description = await rl.question(
+        "Project description (optional): "
+    );
+
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /projects/${id}/
 
 id: ${id}
-entity: project
-
-position: ${positionId}
-${buildListFrontMatter(
+entity: project${buildOptionalField(
+    "position",
+    positionId
+)}${buildOptionalField(
+    "institution",
+    institutionId
+)}${buildListFrontMatter(
     "competencies",
     competencyIds
 )}${buildListFrontMatter(
@@ -494,6 +599,7 @@ ${buildListFrontMatter(
     standardIds
 )}---
 
+${description.trim()}
 `;
 
     await writeEntityFile(
@@ -519,7 +625,7 @@ async function createCompetency(rl) {
     const id = slugify(title);
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /competencies/${id}/
 
@@ -556,7 +662,7 @@ async function createInstitution(rl) {
     );
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /institutions/${id}/
 
@@ -625,7 +731,7 @@ async function createCredential(rl) {
     );
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /credentials/${id}/
 
@@ -651,6 +757,85 @@ institution: ${institutionId}${buildOptionalField(
 
     await writeEntityFile(
         "credentials",
+        id,
+        markdown
+    );
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Non-Degree Study                                                           */
+/* -------------------------------------------------------------------------- */
+
+async function createStudy(rl) {
+    const title = requireValue(
+        await rl.question(
+            "\nNon-degree study title: "
+        ),
+        "Non-degree study title"
+    );
+
+    const institutions =
+        await getEntities("institutions");
+
+    const institutionId =
+        await selectOne(
+            rl,
+            "Which institution was this study completed at?",
+            institutions
+        );
+
+    /*
+     * Institution + study title prevents collisions between similar
+     * non-degree study records at different institutions.
+     */
+    const id = slugify(
+        `${institutionId}-${title}`
+    );
+
+    const studyType = await rl.question(
+        "Study type (optional): "
+    );
+
+    const field = await rl.question(
+        "Field of study (optional): "
+    );
+
+    const start = await rl.question(
+        "Start date YYYY-MM (optional): "
+    );
+
+    const end = await rl.question(
+        "End date YYYY-MM (optional): "
+    );
+
+    const markdown = `---
+title: ${yamlScalar(title)}
+layout: entity
+permalink: /studies/${id}/
+
+id: ${id}
+entity: study
+
+institution: ${institutionId}${buildOptionalField(
+    "study_type",
+    studyType
+)}${buildOptionalField(
+    "field",
+    field
+)}${buildOptionalField(
+    "start",
+    start
+)}${buildOptionalField(
+    "end",
+    end
+)}
+---
+
+`;
+
+    await writeEntityFile(
+        "studies",
         id,
         markdown
     );
@@ -705,12 +890,59 @@ async function createCoursework(rl) {
     const credentials =
         await getEntities("credentials");
 
-    const credentialIds =
-        await selectMany(
+    const studies =
+        await getEntities("studies");
+
+    /*
+     * The content model requires coursework to belong to exactly one
+     * academic path:
+     *
+     *   - one or more academic credentials, OR
+     *   - one non-degree study record
+     */
+    console.log(
+        "\nAcademic association\n\n" +
+        "1. Academic credential(s)\n" +
+        "2. Non-degree study"
+    );
+
+    const associationAnswer =
+        await rl.question(
+            "\nSelect association type: "
+        );
+
+    const associationType =
+        Number.parseInt(
+            associationAnswer.trim(),
+            10
+        );
+
+    let credentialIds = [];
+    let studyId = "";
+
+    if (associationType === 1) {
+        credentialIds = await selectMany(
             rl,
-            "Which academic credentials is this course associated with?",
+            "Which academic credential(s) is this course associated with?",
             credentials
         );
+
+        if (credentialIds.length === 0) {
+            throw new Error(
+                "Coursework associated with credentials must select at least one credential."
+            );
+        }
+    } else if (associationType === 2) {
+        studyId = await selectOne(
+            rl,
+            "Which non-degree study is this course associated with?",
+            studies
+        );
+    } else {
+        throw new Error(
+            "Invalid academic association selection."
+        );
+    }
 
     const competencies =
         await getEntities("competencies");
@@ -743,7 +975,7 @@ async function createCoursework(rl) {
         );
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /coursework/${id}/
 
@@ -752,7 +984,7 @@ entity: course
 
 institution: ${institutionId}
 
-code: ${code}${buildOptionalField(
+code: ${yamlScalar(code)}${buildOptionalField(
     "credits",
     credits
 )}${buildOptionalField(
@@ -761,6 +993,9 @@ code: ${code}${buildOptionalField(
 )}${buildListFrontMatter(
     "credentials",
     credentialIds
+)}${buildOptionalField(
+    "study",
+    studyId
 )}${buildListFrontMatter(
     "competencies",
     competencyIds
@@ -797,7 +1032,7 @@ async function createSoftware(rl) {
     const id = slugify(title);
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /software/${id}/
 
@@ -830,7 +1065,7 @@ async function createStandard(rl) {
     const id = slugify(title);
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /standards/${id}/
 
@@ -881,7 +1116,7 @@ async function createCertification(rl) {
         );
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /certifications/${id}/
 
@@ -946,7 +1181,7 @@ async function createPublication(rl) {
         );
 
     const markdown = `---
-title: ${title}
+title: ${yamlScalar(title)}
 layout: entity
 permalink: /publications/${id}/
 
@@ -1044,6 +1279,10 @@ async function main() {
 
             case "Academic Credential":
                 await createCredential(rl);
+                break;
+
+            case "Non-Degree Study":
+                await createStudy(rl);
                 break;
 
             case "Coursework":
