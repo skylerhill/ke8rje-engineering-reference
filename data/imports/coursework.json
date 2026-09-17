@@ -1,0 +1,880 @@
+{
+  "collection": "coursework",
+  "entity": "course",
+  "items": [
+    {
+      "id": "zane-state-college-cad-105",
+      "title": "AutoCAD I",
+      "institution": "zane-state-college",
+      "code": "CAD 105",
+      "credits": 2,
+      "term": "Fall 2011",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-chm-101",
+      "title": "Chemistry",
+      "institution": "zane-state-college",
+      "code": "CHM 101",
+      "credits": 0,
+      "term": "Fall 2011",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-cmt-103",
+      "title": "Blueprint Reading",
+      "institution": "zane-state-college",
+      "code": "CMT 103",
+      "credits": 2,
+      "term": "Fall 2011",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-egt-109",
+      "title": "Engineering Technology Computer Applications",
+      "institution": "zane-state-college",
+      "code": "EGT 109",
+      "credits": 2,
+      "term": "Fall 2011",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-egt-295",
+      "title": "Special Problems PTE Academic & Personal Development",
+      "institution": "zane-state-college",
+      "code": "EGT 295",
+      "credits": 2,
+      "term": "Fall 2011",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-eng-150",
+      "title": "Freshman Composition",
+      "institution": "zane-state-college",
+      "code": "ENG 150",
+      "credits": 3.333,
+      "term": "Fall 2011",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-ids-101",
+      "title": "College Success Strategies",
+      "institution": "zane-state-college",
+      "code": "IDS 101",
+      "credits": 0.667,
+      "term": "Fall 2011",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mth-113",
+      "title": "Algebra",
+      "institution": "zane-state-college",
+      "code": "MTH 113",
+      "credits": 2.667,
+      "term": "Fall 2011",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+
+    {
+      "id": "zane-state-college-cad-141",
+      "title": "Introduction to Mechanical Modeling",
+      "institution": "zane-state-college",
+      "code": "CAD 141",
+      "credits": 2,
+      "term": "Winter 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-eng-180",
+      "title": "Technical Writing",
+      "institution": "zane-state-college",
+      "code": "ENG 180",
+      "credits": 2.667,
+      "term": "Winter 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mth-124",
+      "title": "Algebra & Trigonometry I",
+      "institution": "zane-state-college",
+      "code": "MTH 124",
+      "credits": 2.667,
+      "term": "Winter 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-phy-201",
+      "title": "Physics I",
+      "institution": "zane-state-college",
+      "code": "PHY 201",
+      "credits": 2.667,
+      "term": "Winter 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-pol-101",
+      "title": "American National Government",
+      "institution": "zane-state-college",
+      "code": "POL 101",
+      "credits": 2.667,
+      "term": "Winter 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+
+    {
+      "id": "zane-state-college-bus-151",
+      "title": "Microeconomics",
+      "institution": "zane-state-college",
+      "code": "BUS 151",
+      "credits": 2.667,
+      "term": "Spring 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-com-261",
+      "title": "Public Speaking",
+      "institution": "zane-state-college",
+      "code": "COM 261",
+      "credits": 2.667,
+      "term": "Spring 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-met-210",
+      "title": "Computer-Aided Working Drawings",
+      "institution": "zane-state-college",
+      "code": "MET 210",
+      "credits": 2,
+      "term": "Spring 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mth-125",
+      "title": "Algebra & Trigonometry II",
+      "institution": "zane-state-college",
+      "code": "MTH 125",
+      "credits": 2.667,
+      "term": "Spring 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-phy-202",
+      "title": "Physics II",
+      "institution": "zane-state-college",
+      "code": "PHY 202",
+      "credits": 2.667,
+      "term": "Spring 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+
+    {
+      "id": "zane-state-college-eeet-1110",
+      "title": "D.C. Circuit Analysis",
+      "institution": "zane-state-college",
+      "code": "EEET 1110",
+      "credits": 4,
+      "term": "Fall 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-math-2510",
+      "title": "Calculus I",
+      "institution": "zane-state-college",
+      "code": "MATH 2510",
+      "credits": 5,
+      "term": "Fall 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mech-2100",
+      "title": "Engineering Economy",
+      "institution": "zane-state-college",
+      "code": "MECH 2100",
+      "credits": 3,
+      "term": "Fall 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mech-2200",
+      "title": "Statics",
+      "institution": "zane-state-college",
+      "code": "MECH 2200",
+      "credits": 3,
+      "term": "Fall 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mech-2500",
+      "title": "Hydraulics and Pneumatics",
+      "institution": "zane-state-college",
+      "code": "MECH 2500",
+      "credits": 3,
+      "term": "Fall 2012",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+
+    {
+      "id": "zane-state-college-eeet-1130",
+      "title": "Electronic Devices",
+      "institution": "zane-state-college",
+      "code": "EEET 1130",
+      "credits": 4,
+      "term": "Spring 2013",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-engl-2470",
+      "title": "The Literature of Sustainability",
+      "institution": "zane-state-college",
+      "code": "ENGL 2470",
+      "credits": 3,
+      "term": "Spring 2013",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mech-1200",
+      "title": "Manufacturing Processes",
+      "institution": "zane-state-college",
+      "code": "MECH 1200",
+      "credits": 3,
+      "term": "Spring 2013",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mech-2300",
+      "title": "Strength of Materials",
+      "institution": "zane-state-college",
+      "code": "MECH 2300",
+      "credits": 3,
+      "term": "Spring 2013",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mech-2400",
+      "title": "Dynamics",
+      "institution": "zane-state-college",
+      "code": "MECH 2400",
+      "credits": 3,
+      "term": "Spring 2013",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-mech-2800",
+      "title": "Robotics",
+      "institution": "zane-state-college",
+      "code": "MECH 2800",
+      "credits": 3,
+      "term": "Spring 2013",
+      "credentials": [
+        "zane-state-college-ats-electro-mechanical-engineering-technology"
+      ]
+    },
+
+    {
+      "id": "ohio-state-university-engr-1110",
+      "title": "Introduction to Ohio State and Aeronautical and Astronautical Engineering I",
+      "institution": "ohio-state-university",
+      "code": "ENGR 1110",
+      "credits": 0.5,
+      "term": "Fall 2013",
+      "study": "ohio-state-university-non-degree-2013-2014"
+    },
+    {
+      "id": "ohio-state-university-math-1151",
+      "title": "Calculus I",
+      "institution": "ohio-state-university",
+      "code": "MATH 1151",
+      "credits": 5,
+      "term": "Fall 2013",
+      "study": "ohio-state-university-non-degree-2013-2014"
+    },
+    {
+      "id": "ohio-state-university-phys-1250",
+      "title": "Mechanics, Work and Energy, Thermal Physics",
+      "institution": "ohio-state-university",
+      "code": "PHYS 1250",
+      "credits": 5,
+      "term": "Fall 2013",
+      "study": "ohio-state-university-non-degree-2013-2014"
+    },
+    {
+      "id": "ohio-state-university-engr-1181",
+      "title": "Fundamentals of Engineering I",
+      "institution": "ohio-state-university",
+      "code": "ENGR 1181",
+      "credits": 2,
+      "term": "Fall 2013",
+      "study": "ohio-state-university-non-degree-2013-2014"
+    },
+    {
+      "id": "ohio-state-university-engr-1120",
+      "title": "Introduction to Ohio State and Aeronautical and Astronautical Engineering II",
+      "institution": "ohio-state-university",
+      "code": "ENGR 1120",
+      "credits": 0.5,
+      "term": "Spring 2014",
+      "study": "ohio-state-university-non-degree-2013-2014"
+    },
+    {
+      "id": "ohio-state-university-chem-1250",
+      "title": "General Chemistry for Engineers",
+      "institution": "ohio-state-university",
+      "code": "CHEM 1250",
+      "credits": 4,
+      "term": "Spring 2014",
+      "study": "ohio-state-university-non-degree-2013-2014"
+    },
+    {
+      "id": "ohio-state-university-engr-1182",
+      "title": "Fundamentals of Engineering II",
+      "institution": "ohio-state-university",
+      "code": "ENGR 1182",
+      "credits": 2,
+      "term": "Spring 2014",
+      "study": "ohio-state-university-non-degree-2013-2014"
+    },
+    {
+      "id": "ohio-state-university-engr-1221",
+      "title": "Introduction to Computer Programming in MATLAB for Engineers",
+      "institution": "ohio-state-university",
+      "code": "ENGR 1221",
+      "credits": 2,
+      "term": "Spring 2014",
+      "study": "ohio-state-university-non-degree-2013-2014"
+    },
+
+    {
+      "id": "ohio-university-film-2010",
+      "title": "History of World Cinema",
+      "institution": "ohio-university",
+      "code": "FILM 2010",
+      "credits": 3,
+      "term": "Fall 2014",
+      "study": "ohio-university-non-degree-2014"
+    },
+    {
+      "id": "ohio-university-hist-1210",
+      "title": "Western Civilization to 1500",
+      "institution": "ohio-university",
+      "code": "HIST 1210",
+      "credits": 3,
+      "term": "Fall 2014",
+      "study": "ohio-university-non-degree-2014"
+    },
+    {
+      "id": "ohio-university-hist-1330",
+      "title": "World History Since 1750",
+      "institution": "ohio-university",
+      "code": "HIST 1330",
+      "credits": 3,
+      "term": "Fall 2014",
+      "study": "ohio-university-non-degree-2014"
+    },
+    {
+      "id": "ohio-university-phil-1300",
+      "title": "Introduction to Ethics",
+      "institution": "ohio-university",
+      "code": "PHIL 1300",
+      "credits": 3,
+      "term": "Fall 2014",
+      "study": "ohio-university-non-degree-2014"
+    },
+
+    {
+      "id": "zane-state-college-bmca-1070",
+      "title": "Introduction to Publisher",
+      "institution": "zane-state-college",
+      "code": "BMCA 1070",
+      "credits": 1,
+      "term": "Fall 2014",
+      "credentials": [
+        "zane-state-college-aas-electrical-electronic-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-eeet-1230",
+      "title": "A.C. Circuit Analysis",
+      "institution": "zane-state-college",
+      "code": "EEET 1230",
+      "credits": 4,
+      "term": "Spring 2015",
+      "credentials": [
+        "zane-state-college-aas-electrical-electronic-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-engl-2500",
+      "title": "Composition II",
+      "institution": "zane-state-college",
+      "code": "ENGL 2500",
+      "credits": 3,
+      "term": "Spring 2015",
+      "credentials": [
+        "zane-state-college-aas-electrical-electronic-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-math-2520",
+      "title": "Calculus II",
+      "institution": "zane-state-college",
+      "code": "MATH 2520",
+      "credits": 5,
+      "term": "Spring 2015",
+      "credentials": [
+        "zane-state-college-aas-electrical-electronic-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-eeet-2150",
+      "title": "Digital Circuits",
+      "institution": "zane-state-college",
+      "code": "EEET 2150",
+      "credits": 4,
+      "term": "Fall 2015",
+      "credentials": [
+        "zane-state-college-aas-electrical-electronic-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-eeet-2210",
+      "title": "Industrial Instrumentation and Controls",
+      "institution": "zane-state-college",
+      "code": "EEET 2210",
+      "credits": 4,
+      "term": "Fall 2015",
+      "credentials": [
+        "zane-state-college-aas-electrical-electronic-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-eeet-2450",
+      "title": "Rotating Machinery and Control",
+      "institution": "zane-state-college",
+      "code": "EEET 2450",
+      "credits": 4,
+      "term": "Fall 2015",
+      "credentials": [
+        "zane-state-college-aas-electrical-electronic-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-eeet-2510",
+      "title": "Programmable Logic Controllers",
+      "institution": "zane-state-college",
+      "code": "EEET 2510",
+      "credits": 4,
+      "term": "Spring 2016",
+      "credentials": [
+        "zane-state-college-aas-electrical-electronic-engineering-technology"
+      ]
+    },
+    {
+      "id": "zane-state-college-phys-2020",
+      "title": "Physics II",
+      "institution": "zane-state-college",
+      "code": "PHYS 2020",
+      "credits": 4,
+      "term": "Spring 2016",
+      "credentials": [
+        "zane-state-college-aas-electrical-electronic-engineering-technology"
+      ]
+    },
+
+    {
+      "id": "miami-university-ent-316",
+      "title": "Project Management",
+      "institution": "miami-university",
+      "code": "ENT 316",
+      "credits": 3,
+      "term": "Summer 2016",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+    {
+      "id": "miami-university-ent-407",
+      "title": "Modern Manufacturing Systems",
+      "institution": "miami-university",
+      "code": "ENT 407",
+      "credits": 3,
+      "term": "Summer 2016",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+    {
+      "id": "miami-university-sta-301",
+      "title": "Applied Statistics",
+      "institution": "miami-university",
+      "code": "STA 301",
+      "credits": 3,
+      "term": "Summer 2016",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+
+    {
+      "id": "zane-state-college-mech-1300",
+      "title": "Industrial Materials",
+      "institution": "zane-state-college",
+      "code": "MECH 1300",
+      "credits": 3,
+      "term": "Spring 2017",
+      "study": "zane-state-college-non-degree-2017"
+    },
+    {
+      "id": "miami-university-mth-231",
+      "title": "Elements of Discrete Mathematics",
+      "institution": "miami-university",
+      "code": "MTH 231",
+      "credits": 3,
+      "term": "Spring 2017",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+    {
+      "id": "miami-university-phy-111",
+      "title": "Astronomy and Space Physics",
+      "institution": "miami-university",
+      "code": "PHY 111",
+      "credits": 3,
+      "term": "Spring 2017",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+
+    {
+      "id": "zane-state-college-chem-1010",
+      "title": "Introduction to Chemistry",
+      "institution": "zane-state-college",
+      "code": "CHEM 1010",
+      "credits": 3,
+      "term": "Summer 2017",
+      "study": "zane-state-college-non-degree-2017"
+    },
+    {
+      "id": "miami-university-ath-390z",
+      "title": "Pokémon Local & Global Cultures",
+      "institution": "miami-university",
+      "code": "ATH 390Z",
+      "credits": 3,
+      "term": "Summer 2017",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+    {
+      "id": "miami-university-ent-311",
+      "title": "Process Control Interface Design",
+      "institution": "miami-university",
+      "code": "ENT 311",
+      "credits": 3,
+      "term": "Summer 2017",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+
+    {
+      "id": "miami-university-ent-401",
+      "title": "Computerized Instrumentation & Feedback Control",
+      "institution": "miami-university",
+      "code": "ENT 401",
+      "credits": 3,
+      "term": "Fall 2017",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+    {
+      "id": "miami-university-ent-418",
+      "title": "Electro-Mechanical Control Systems",
+      "institution": "miami-university",
+      "code": "ENT 418",
+      "credits": 3,
+      "term": "Fall 2017",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+    {
+      "id": "miami-university-ent-497",
+      "title": "Senior Design Project",
+      "institution": "miami-university",
+      "code": "ENT 497",
+      "credits": 2,
+      "term": "Fall 2017",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+    {
+      "id": "miami-university-ent-402",
+      "title": "Industrial Automation Lab",
+      "institution": "miami-university",
+      "code": "ENT 402",
+      "credits": 3,
+      "term": "Spring 2018",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+    {
+      "id": "miami-university-ent-498",
+      "title": "Senior Design Project",
+      "institution": "miami-university",
+      "code": "ENT 498",
+      "credits": 2,
+      "term": "Spring 2018",
+      "credentials": [
+        "miami-university-bs-engineering-technology-electro-mechanical"
+      ]
+    },
+
+    {
+      "id": "university-of-cincinnati-math-2073",
+      "title": "Ordinary Differential Equations",
+      "institution": "university-of-cincinnati",
+      "code": "MATH 2073",
+      "credits": 3,
+      "term": "Fall 2018",
+      "study": "university-of-cincinnati-non-degree-2018"
+    },
+    {
+      "id": "central-ohio-technical-college-mech-202",
+      "title": "Thermodynamics",
+      "institution": "central-ohio-technical-college",
+      "code": "MECH 202",
+      "credits": 2,
+      "term": "Autumn 2018",
+      "study": "central-ohio-technical-college-non-degree-2018"
+    },
+
+    {
+      "id": "ohio-university-ee-5003",
+      "title": "Computation Tools for Engineers",
+      "institution": "ohio-university",
+      "code": "EE 5003",
+      "credits": 3,
+      "term": "Summer 2020",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+    {
+      "id": "ohio-university-ee-6283",
+      "title": "State-Space Methods in Control",
+      "institution": "ohio-university",
+      "code": "EE 6283",
+      "credits": 3,
+      "term": "Summer 2020",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+
+    {
+      "id": "zane-state-college-alte-1800",
+      "title": "Photovoltaic Energy Systems",
+      "institution": "zane-state-college",
+      "code": "ALTE 1800",
+      "credits": 2,
+      "term": "Fall 2020",
+      "study": "zane-state-college-non-degree-2020"
+    },
+    {
+      "id": "zane-state-college-alte-2200",
+      "title": "Wind Power Systems",
+      "institution": "zane-state-college",
+      "code": "ALTE 2200",
+      "credits": 2,
+      "term": "Fall 2020",
+      "study": "zane-state-college-non-degree-2020"
+    },
+    {
+      "id": "ohio-university-ee-6033",
+      "title": "Inertial Navigation Systems",
+      "institution": "ohio-university",
+      "code": "EE 6033",
+      "credits": 3,
+      "term": "Fall 2020",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+    {
+      "id": "ohio-university-ee-5673",
+      "title": "Embedded Systems",
+      "institution": "ohio-university",
+      "code": "EE 5673",
+      "credits": 3,
+      "term": "Fall 2020",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+
+    {
+      "id": "ohio-university-ee-5403",
+      "title": "Microwave Theory and Devices",
+      "institution": "ohio-university",
+      "code": "EE 5403",
+      "credits": 3,
+      "term": "Spring 2021",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+    {
+      "id": "ohio-university-ee-6053",
+      "title": "Satellite-Based Navigation Systems",
+      "institution": "ohio-university",
+      "code": "EE 6053",
+      "credits": 3,
+      "term": "Spring 2021",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+
+    {
+      "id": "ohio-university-ee-6063",
+      "title": "Integrated Navigation Systems",
+      "institution": "ohio-university",
+      "code": "EE 6063",
+      "credits": 3,
+      "term": "Summer 2021",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+    {
+      "id": "ohio-university-ee-6103",
+      "title": "Vehicle Control",
+      "institution": "ohio-university",
+      "code": "EE 6103",
+      "credits": 3,
+      "term": "Summer 2021",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+
+    {
+      "id": "ohio-university-ee-5313",
+      "title": "Optoelectronics and Photonics",
+      "institution": "ohio-university",
+      "code": "EE 5313",
+      "credits": 3,
+      "term": "Fall 2021",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+    {
+      "id": "ohio-university-ee-5853",
+      "title": "Electronic Navigation Systems",
+      "institution": "ohio-university",
+      "code": "EE 5853",
+      "credits": 3,
+      "term": "Fall 2021",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+
+    {
+      "id": "ohio-university-ee-5713",
+      "title": "Communication Engineering",
+      "institution": "ohio-university",
+      "code": "EE 5713",
+      "credits": 3,
+      "term": "Spring 2022",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+    {
+      "id": "ohio-university-emgt-6010",
+      "title": "Communication Skills for Engineers",
+      "institution": "ohio-university",
+      "code": "EMGT 6010",
+      "credits": 3,
+      "term": "Spring 2022",
+      "credentials": [
+        "ohio-university-ms-electrical-engineering"
+      ]
+    },
+
+    {
+      "id": "zane-state-college-eeet-2600",
+      "title": "Electronics Technician Certification",
+      "institution": "zane-state-college",
+      "code": "EEET 2600",
+      "credits": 2,
+      "term": "Spring 2023",
+      "credentials": [
+        "zane-state-college-associate-of-science"
+      ]
+    }
+  ]
+}

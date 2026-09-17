@@ -1,0 +1,54 @@
+{
+  "collection": "studies",
+  "entity": "study",
+  "items": [
+    {
+      "id": "ohio-state-university-non-degree-2013-2014",
+      "title": "Non-Degree Engineering Study",
+      "institution": "ohio-state-university",
+      "study_type": "Non-Degree",
+      "start": "2013-08",
+      "end": "2014-05"
+    },
+    {
+      "id": "ohio-university-non-degree-2014",
+      "title": "Non-Degree Study",
+      "institution": "ohio-university",
+      "study_type": "Non-Degree",
+      "start": "2014-08",
+      "end": "2014-12"
+    },
+    {
+      "id": "zane-state-college-non-degree-2017",
+      "title": "Supplemental Engineering Study",
+      "institution": "zane-state-college",
+      "study_type": "Non-Degree",
+      "start": "2017-01",
+      "end": "2017-08"
+    },
+    {
+      "id": "university-of-cincinnati-non-degree-2018",
+      "title": "Non-Degree Study",
+      "institution": "university-of-cincinnati",
+      "study_type": "Non-Degree",
+      "start": "2018-08",
+      "end": "2018-12"
+    },
+    {
+      "id": "central-ohio-technical-college-non-degree-2018",
+      "title": "Non-Degree Study",
+      "institution": "central-ohio-technical-college",
+      "study_type": "Non-Degree",
+      "start": "2018-08",
+      "end": "2018-12"
+    },
+    {
+      "id": "zane-state-college-non-degree-2020",
+      "title": "Supplemental Renewable Energy Study",
+      "institution": "zane-state-college",
+      "study_type": "Non-Degree",
+      "start": "2020-08",
+      "end": "2020-12"
+    }
+  ]
+}

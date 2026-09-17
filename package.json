@@ -5,6 +5,7 @@
   "main": "index.js",
 "scripts": {
   "add": "node scripts/add-content.js",
+  "import": "node scripts/import-content.js",
   "validate": "node scripts/validate-content.js",
   "build": "eleventy",
   "serve": "eleventy --serve"

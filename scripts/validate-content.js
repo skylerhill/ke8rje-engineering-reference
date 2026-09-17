@@ -4,11 +4,15 @@ const path = require("node:path");
 /*
  * Engineering Reference Content Validator
  *
- * Validates the canonical Markdown content used by the Eleventy site.
+ * Validates canonical Markdown content used by the Eleventy site.
  *
- * The validator checks both structural correctness and relationships
- * between entities. Relationships use stable IDs rather than display
- * names so titles can change without breaking the site's data graph.
+ * The validator checks:
+ *   - Required front-matter fields
+ *   - Folder ID / front-matter ID consistency
+ *   - Entity type consistency
+ *   - Permalink consistency
+ *   - Duplicate IDs within each collection
+ *   - Relationships between canonical entities
  */
 
 
@@ -21,10 +25,6 @@ const SRC_DIRECTORY = path.join(
     "src"
 );
 
-/*
- * Each collection defines the singular entity value expected in the
- * front matter of files stored in that collection.
- */
 const COLLECTIONS = {
     employers: "employer",
     positions: "position",
@@ -32,6 +32,7 @@ const COLLECTIONS = {
     competencies: "competency",
     institutions: "institution",
     credentials: "credential",
+    studies: "study",
     coursework: "course",
     software: "software",
     standards: "standard",
@@ -82,10 +83,9 @@ async function getDirectories(directory) {
 /* -------------------------------------------------------------------------- */
 
 /*
- * The project currently uses deliberately simple YAML front matter.
+ * The site currently uses deliberately simple YAML front matter.
  *
- * Rather than introducing another dependency, this parser supports the
- * structures currently used by the site:
+ * Supported structures:
  *
  *     field: value
  *
@@ -95,8 +95,8 @@ async function getDirectories(directory) {
  *       - value
  *       - value
  *
- * If the content model later requires nested YAML objects, this parser
- * should be replaced with a dedicated YAML parser.
+ * If nested YAML objects become necessary later, this parser should be
+ * replaced with a dedicated YAML parser.
  */
 function parseFrontMatter(content) {
     const match = content.match(
@@ -276,7 +276,8 @@ function validateEntityType(
     if (entity.data.entity !== expected) {
         errors.push(
             `${entity.collection}/${entity.folder}: ` +
-            `Expected entity "${expected}" but found "${entity.data.entity}"`
+            `Expected entity "${expected}" but found ` +
+            `"${entity.data.entity}"`
         );
     }
 }
@@ -299,40 +300,51 @@ function validatePermalink(
     if (entity.data.permalink !== expected) {
         errors.push(
             `${entity.collection}/${entity.folder}: ` +
-            `Expected permalink "${expected}" but found "${entity.data.permalink}"`
+            `Expected permalink "${expected}" but found ` +
+            `"${entity.data.permalink}"`
         );
     }
 }
 
 
+/*
+ * IDs must be unique within a collection.
+ *
+ * The same real-world organization may legitimately appear in more than
+ * one collection. For example, Zane State College can be both an employer
+ * and an academic institution.
+ */
 function validateDuplicateIds(
-    entities,
+    collections,
     errors
 ) {
-    const ids = new Map();
+    for (
+        const [collectionName, entities]
+        of Object.entries(collections)
+    ) {
+        const ids = new Map();
 
-    for (const entity of entities) {
-        if (!entity.data?.id) {
-            continue;
-        }
+        for (const entity of entities) {
+            if (!entity.data?.id) {
+                continue;
+            }
 
-        const location =
-            `${entity.collection}/${entity.folder}`;
-
-        const existing = ids.get(
-            entity.data.id
-        );
-
-        if (existing) {
-            errors.push(
-                `Duplicate id "${entity.data.id}" found in ` +
-                `${existing} and ${location}`
+            const existing = ids.get(
+                entity.data.id
             );
-        } else {
-            ids.set(
-                entity.data.id,
-                location
-            );
+
+            if (existing) {
+                errors.push(
+                    `Duplicate id "${entity.data.id}" found in ` +
+                    `${collectionName}/${existing} and ` +
+                    `${collectionName}/${entity.folder}`
+                );
+            } else {
+                ids.set(
+                    entity.data.id,
+                    entity.folder
+                );
+            }
         }
     }
 }
@@ -454,6 +466,9 @@ function validateRelationships(
     const credentialIds =
         getIds(collections.credentials);
 
+    const studyIds =
+        getIds(collections.studies);
+
     const softwareIds =
         getIds(collections.software);
 
@@ -534,12 +549,30 @@ function validateRelationships(
 
 
     /*
-     * Course -> Institution
+     * Non-Degree Study -> Institution
+     */
+    for (const study of collections.studies) {
+        validateReference({
+            entity: study,
+            field: "institution",
+            validIds: institutionIds,
+            required: true,
+            errors
+        });
+    }
+
+
+    /*
+     * Course -> Academic Record
      *
-     * A course may belong to zero, one, or multiple academic
-     * credentials. Multiple credentials are useful when coursework
-     * contributes to overlapping programs such as a graduate degree
-     * and graduate certificate.
+     * Every course belongs to an institution.
+     *
+     * Degree/certificate coursework references one or more academic
+     * credentials using "credentials".
+     *
+     * Non-degree coursework references a study period using "study".
+     *
+     * A course must use one form or the other, but not both.
      */
     for (const course of collections.coursework) {
         validateReference({
@@ -550,10 +583,46 @@ function validateRelationships(
             errors
         });
 
+        const credentials =
+            course.data?.credentials;
+
+        const study =
+            course.data?.study;
+
+        const hasCredentials =
+            Array.isArray(credentials) &&
+            credentials.length > 0;
+
+        const hasStudy =
+            typeof study === "string" &&
+            study.length > 0;
+
+        if (!hasCredentials && !hasStudy) {
+            errors.push(
+                `coursework/${course.folder}: ` +
+                `Missing academic record relationship; ` +
+                `expected "credentials" or "study"`
+            );
+        }
+
+        if (hasCredentials && hasStudy) {
+            errors.push(
+                `coursework/${course.folder}: ` +
+                `Course cannot reference both "credentials" and "study"`
+            );
+        }
+
         validateReferenceList({
             entity: course,
             field: "credentials",
             validIds: credentialIds,
+            errors
+        });
+
+        validateReference({
+            entity: course,
+            field: "study",
+            validIds: studyIds,
             errors
         });
 
@@ -581,10 +650,7 @@ function validateRelationships(
 
 
     /*
-     * Publications can connect back to projects and competencies.
-     *
-     * These relationships are optional because not every publication
-     * necessarily originates from a project represented on the site.
+     * Publication -> Projects / Competencies
      */
     for (
         const publication
@@ -607,7 +673,7 @@ function validateRelationships(
 
 
     /*
-     * Certifications may be associated with competencies.
+     * Certification -> Competencies
      */
     for (
         const certification
@@ -672,7 +738,7 @@ async function main() {
     }
 
     validateDuplicateIds(
-        allEntities,
+        collections,
         errors
     );
 
