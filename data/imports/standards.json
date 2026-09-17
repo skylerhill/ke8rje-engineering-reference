@@ -1,0 +1,31 @@
+{
+  "collection": "standards",
+  "entity": "standard",
+  "items": [
+    {
+      "id": "mil-std-461",
+      "title": "MIL-STD-461",
+      "description": "Department of Defense interface and verification requirements addressing electromagnetic interference characteristics of electronic, electrical, and electromechanical equipment and subsystems."
+    },
+    {
+      "id": "nfpa-70",
+      "title": "NFPA 70 — National Electrical Code",
+      "description": "Electrical installation standard addressing practical safeguarding of persons and property from hazards arising from the use of electricity."
+    },
+    {
+      "id": "nfpa-79",
+      "title": "NFPA 79 — Electrical Standard for Industrial Machinery",
+      "description": "Electrical safety standard addressing electrical and electronic equipment, apparatus, and systems associated with industrial machinery."
+    },
+    {
+      "id": "abet-etac",
+      "title": "ABET Engineering Technology Accreditation Criteria",
+      "description": "Accreditation criteria used to evaluate postsecondary engineering technology programs, including curriculum, student outcomes, continuous improvement, faculty, facilities, and institutional support."
+    },
+    {
+      "id": "sysml",
+      "title": "Systems Modeling Language (SysML)",
+      "description": "General-purpose systems modeling language used to represent system requirements, structure, behavior, interfaces, parameters, and relationships in model-based systems engineering."
+    }
+  ]
+}
