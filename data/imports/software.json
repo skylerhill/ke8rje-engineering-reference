@@ -1,0 +1,136 @@
+{
+  "collection": "software",
+  "entity": "software",
+  "items": [
+    {
+      "id": "matlab",
+      "title": "MATLAB",
+      "description": "Technical computing environment used for engineering analysis, numerical computation, modeling, data processing, and algorithm development."
+    },
+    {
+      "id": "simulink",
+      "title": "Simulink",
+      "description": "Model-based design environment for modeling, simulation, and analysis of dynamic and control systems."
+    },
+    {
+      "id": "fusion-360",
+      "title": "Autodesk Fusion 360",
+      "description": "Computer-aided design and engineering environment used for parametric 3D modeling, assemblies, mechanical design, and fabrication planning."
+    },
+    {
+      "id": "autocad",
+      "title": "AutoCAD",
+      "description": "Computer-aided drafting and design software used for technical drawings, layouts, documentation, and engineering design work."
+    },
+    {
+      "id": "kicad",
+      "title": "KiCad",
+      "description": "Electronic design automation software used for schematic capture, printed circuit board design, component libraries, and electronics documentation."
+    },
+    {
+      "id": "ni-labview",
+      "title": "NI LabVIEW",
+      "description": "Graphical engineering software environment for instrumentation, automated testing, data acquisition, measurement, and control applications."
+    },
+    {
+      "id": "ni-daq",
+      "title": "NI-DAQ",
+      "description": "National Instruments data-acquisition software and driver ecosystem used to interface engineering applications with measurement and data-acquisition hardware."
+    },
+    {
+      "id": "3dexperience",
+      "title": "3DEXPERIENCE",
+      "description": "Engineering product-development environment used for collaborative engineering, product data, design information, and lifecycle workflows."
+    },
+    {
+      "id": "enovia",
+      "title": "ENOVIA",
+      "description": "Product lifecycle and configuration-management environment used for engineering data, product structures, controlled information, and collaborative engineering workflows."
+    },
+    {
+      "id": "cameo-systems-modeler",
+      "title": "Cameo Systems Modeler",
+      "description": "Model-based systems engineering environment used for system architecture, requirements relationships, interfaces, behavior, and SysML-based engineering models."
+    },
+    {
+      "id": "c",
+      "title": "C",
+      "description": "General-purpose programming language commonly used for embedded systems, low-level software, instrumentation, and engineering applications."
+    },
+    {
+      "id": "cpp",
+      "title": "C++",
+      "description": "General-purpose programming language used for engineering software, embedded applications, data processing, automation, and performance-oriented systems."
+    },
+    {
+      "id": "python",
+      "title": "Python",
+      "description": "General-purpose programming language used for engineering automation, data processing, scripting, analysis, tooling, and software development."
+    },
+    {
+      "id": "git",
+      "title": "Git",
+      "description": "Distributed version-control system used to manage source code, engineering documentation, configuration history, and collaborative development."
+    },
+    {
+      "id": "github",
+      "title": "GitHub",
+      "description": "Git-based software-development platform used for source control, project collaboration, documentation, issue tracking, and repository hosting."
+    },
+    {
+      "id": "gitlab",
+      "title": "GitLab",
+      "description": "Git-based development platform used for source control, collaborative software development, code review, and automated development workflows."
+    },
+    {
+      "id": "gitlab-ci-cd",
+      "title": "GitLab CI/CD",
+      "description": "Continuous-integration and delivery system used to automate software builds, testing, validation, artifacts, and repository workflows."
+    },
+    {
+      "id": "platformio",
+      "title": "PlatformIO",
+      "description": "Embedded software development ecosystem used for project configuration, compilation, dependency management, testing, and embedded development workflows."
+    },
+    {
+      "id": "unity-test-framework",
+      "title": "Unity Test Framework",
+      "description": "Unit-testing framework for C and embedded software used to create and execute automated software tests."
+    },
+    {
+      "id": "visual-studio-code",
+      "title": "Visual Studio Code",
+      "description": "Source-code editor used for software development, scripting, version-control workflows, documentation, and web development."
+    },
+    {
+      "id": "nodejs",
+      "title": "Node.js",
+      "description": "JavaScript runtime used for development tooling, automation, static-site generation, and software build workflows."
+    },
+    {
+      "id": "eleventy",
+      "title": "Eleventy",
+      "description": "Static-site generator used to transform structured content and reusable templates into the Engineering Reference website."
+    },
+    {
+      "id": "nunjucks",
+      "title": "Nunjucks",
+      "description": "Template language used to create reusable layouts and relationship-driven views for the Engineering Reference website."
+    },
+    {
+      "id": "html",
+      "title": "HTML",
+      "description": "Markup language used to structure web content and generated website pages."
+    },
+    {
+      "id": "css",
+      "title": "CSS",
+      "description": "Style-sheet language used to define presentation, layout, and visual behavior for web interfaces."
+    },
+    {
+      "id": "javascript",
+      "title": "JavaScript",
+      "description": "Programming language used for web development, Node.js tooling, automation, and site-generation workflows."
+    }
+  ]
+}
