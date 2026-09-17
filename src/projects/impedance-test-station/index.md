@@ -1,0 +1,11 @@
+---
+title: Impedance Test Station
+layout: entity
+permalink: /projects/impedance-test-station/
+
+id: impedance-test-station
+entity: project
+position: boeing-systems-engineer
+---
+
+Modernization of a legacy impedance test station, including reconstruction and analysis of legacy circuitry, electrical redesign, integration, troubleshooting, and verification and validation. Work included development and troubleshooting of signal-conditioning circuitry as a subassembly of the overall test-station design.

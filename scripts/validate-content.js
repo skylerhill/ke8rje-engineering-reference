@@ -98,6 +98,7 @@ async function getDirectories(directory) {
  * If nested YAML objects become necessary later, this parser should be
  * replaced with a dedicated YAML parser.
  */
+
 function parseFrontMatter(content) {
     const match = content.match(
         /^---\r?\n([\s\S]*?)\r?\n---/
@@ -314,6 +315,7 @@ function validatePermalink(
  * one collection. For example, Zane State College can be both an employer
  * and an academic institution.
  */
+
 function validateDuplicateIds(
     collections,
     errors
@@ -482,6 +484,7 @@ function validateRelationships(
     /*
      * Position -> Employer
      */
+
     for (const position of collections.positions) {
         validateReference({
             entity: position,
@@ -494,17 +497,34 @@ function validateRelationships(
 
 
     /*
-     * Project -> Position
+     * Project Relationships
      *
-     * Projects may additionally reference competencies,
-     * software, and standards.
+     * Professional projects may reference a position.
+     *
+     * Academic projects may reference an institution.
+     *
+     * Personal, open-source, research, and independent projects may
+     * exist without either relationship.
+     *
+     * When a position or institution relationship is supplied, the
+     * referenced entity must exist.
+     *
+     * Projects may additionally reference competencies, software,
+     * and engineering standards.
      */
+
     for (const project of collections.projects) {
         validateReference({
             entity: project,
             field: "position",
             validIds: positionIds,
-            required: true,
+            errors
+        });
+
+        validateReference({
+            entity: project,
+            field: "institution",
+            validIds: institutionIds,
             errors
         });
 
@@ -534,6 +554,7 @@ function validateRelationships(
     /*
      * Academic Credential -> Institution
      */
+
     for (
         const credential
         of collections.credentials
@@ -551,6 +572,7 @@ function validateRelationships(
     /*
      * Non-Degree Study -> Institution
      */
+
     for (const study of collections.studies) {
         validateReference({
             entity: study,
@@ -574,6 +596,7 @@ function validateRelationships(
      *
      * A course must use one form or the other, but not both.
      */
+
     for (const course of collections.coursework) {
         validateReference({
             entity: course,
@@ -652,6 +675,7 @@ function validateRelationships(
     /*
      * Publication -> Projects / Competencies
      */
+
     for (
         const publication
         of collections.publications
@@ -675,6 +699,7 @@ function validateRelationships(
     /*
      * Certification -> Competencies
      */
+
     for (
         const certification
         of collections.certifications
