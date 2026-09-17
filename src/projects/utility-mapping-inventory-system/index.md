@@ -6,6 +6,12 @@ permalink: /projects/utility-mapping-inventory-system/
 id: utility-mapping-inventory-system
 entity: project
 position: amg-vanadium-drafting-technician-intern
+competencies:
+  - cad-engineering-drafting
+  - engineering-documentation
+  - configuration-management
+software:
+  - autocad
 ---
 
 Engineering documentation project involving mapping of underground and surface utilities, translation of field information into CAD drawings, and consolidation of equipment and drawing records into a searchable information system.

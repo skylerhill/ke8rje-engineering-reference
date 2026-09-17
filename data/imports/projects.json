@@ -6,90 +6,298 @@
       "id": "gyro-balancer-test-station",
       "title": "Gyro Balancer Test Station",
       "position": "boeing-systems-engineer",
+      "competencies": [
+        "systems-engineering",
+        "requirements-engineering",
+        "verification-validation",
+        "systems-integration",
+        "electrical-engineering",
+        "electrical-design",
+        "instrumentation-measurement",
+        "test-engineering",
+        "automated-test-equipment",
+        "troubleshooting-root-cause-analysis",
+        "reverse-engineering"
+      ],
+      "software": [
+        "3dexperience",
+        "enovia",
+        "cameo-systems-modeler",
+        "ni-daq"
+      ],
+      "standards": [
+        "mil-std-461",
+        "nfpa-70",
+        "nfpa-79"
+      ],
       "description": "Modernization of a legacy electrical test station used for gyro balancing operations. Engineering work included legacy-system reconstruction, requirements and interface definition, electrical design, component selection, integration, troubleshooting, and verification and validation."
     },
     {
       "id": "drift-test-station",
       "title": "Drift Test Station",
       "position": "boeing-systems-engineer",
+      "competencies": [
+        "systems-engineering",
+        "requirements-engineering",
+        "verification-validation",
+        "systems-integration",
+        "electrical-engineering",
+        "electrical-design",
+        "instrumentation-measurement",
+        "test-engineering",
+        "automated-test-equipment",
+        "troubleshooting-root-cause-analysis",
+        "reverse-engineering"
+      ],
+      "software": [
+        "3dexperience",
+        "enovia",
+        "cameo-systems-modeler",
+        "ni-daq"
+      ],
+      "standards": [
+        "mil-std-461",
+        "nfpa-70",
+        "nfpa-79"
+      ],
       "description": "Modernization of a legacy electrical test station supporting drift testing. Engineering work included evaluation of the legacy design, requirements development, electrical redesign, commercial component integration, design documentation, multidisciplinary coordination, and verification and validation."
     },
     {
       "id": "impedance-test-station",
       "title": "Impedance Test Station",
       "position": "boeing-systems-engineer",
+      "competencies": [
+        "systems-engineering",
+        "requirements-engineering",
+        "verification-validation",
+        "systems-integration",
+        "electrical-engineering",
+        "electrical-design",
+        "circuit-analysis",
+        "analog-electronics",
+        "signal-conditioning",
+        "instrumentation-measurement",
+        "test-engineering",
+        "automated-test-equipment",
+        "troubleshooting-root-cause-analysis",
+        "reverse-engineering"
+      ],
+      "software": [
+        "3dexperience",
+        "enovia",
+        "cameo-systems-modeler",
+        "ni-daq"
+      ],
+      "standards": [
+        "mil-std-461",
+        "nfpa-70",
+        "nfpa-79"
+      ],
       "description": "Modernization of a legacy impedance test station, including reconstruction and analysis of legacy circuitry, electrical redesign, integration, troubleshooting, and verification and validation. Work included development and troubleshooting of signal-conditioning circuitry as a subassembly of the overall test-station design."
     },
     {
       "id": "utility-mapping-inventory-system",
       "title": "Utility Mapping & Inventory System Consolidation",
       "position": "amg-vanadium-drafting-technician-intern",
+      "competencies": [
+        "cad-engineering-drafting",
+        "engineering-documentation",
+        "configuration-management"
+      ],
+      "software": [
+        "autocad"
+      ],
       "description": "Engineering documentation project involving mapping of underground and surface utilities, translation of field information into CAD drawings, and consolidation of equipment and drawing records into a searchable information system."
     },
     {
       "id": "robotics-course-laboratory-overhaul",
       "title": "Robotics Course & Laboratory Overhaul",
       "position": "zane-state-college-assistant-professor-program-director",
+      "competencies": [
+        "robotics",
+        "industrial-automation",
+        "engineering-education",
+        "curriculum-development",
+        "laboratory-development",
+        "engineering-project-management",
+        "technical-leadership"
+      ],
+      "standards": [
+        "abet-etac"
+      ],
       "description": "Modernization of robotics curriculum and laboratory resources through needs assessment, benchmarking, curriculum development, equipment evaluation and selection, laboratory planning, safety considerations, and implementation."
     },
     {
       "id": "course-hybridization-virtualization",
       "title": "Engineering Technology Course Hybridization & Virtualization",
       "position": "zane-state-college-instructor",
+      "competencies": [
+        "engineering-education",
+        "curriculum-development",
+        "laboratory-development"
+      ],
       "description": "Restructuring of engineering technology coursework and laboratory activities for hybrid and virtual delivery while maintaining technical learning objectives and practical engineering content."
     },
     {
       "id": "engineering-technology-capstone-program",
       "title": "Engineering Technology Capstone Design Program",
       "position": "zane-state-college-assistant-professor-program-director",
+      "competencies": [
+        "engineering-education",
+        "curriculum-development",
+        "engineering-project-management",
+        "technical-leadership",
+        "engineering-fabrication"
+      ],
+      "standards": [
+        "abet-etac"
+      ],
       "description": "Development and support of engineering technology capstone design activities, including project planning, technical mentoring, design review, documentation, fabrication, testing, and evaluation of student engineering projects."
     },
     {
       "id": "industrial-iot-monitoring-system",
       "title": "Industrial Internet of Things Monitoring System",
       "institution": "miami-university",
+      "competencies": [
+        "engineering-research",
+        "electrical-engineering",
+        "electrical-design",
+        "embedded-systems",
+        "sensor-systems",
+        "instrumentation-measurement",
+        "data-acquisition",
+        "industrial-internet-of-things",
+        "wireless-communications"
+      ],
       "description": "Development of wireless embedded sensor nodes for industrial equipment monitoring and troubleshooting. The system incorporated temperature, humidity, and vibration sensing, custom electronics, embedded software, LoRa wireless communication, calibration, and communication-reliability testing. The work contributed to an IEEE IECON 2018 publication."
     },
     {
       "id": "advanced-energy-vehicle",
       "title": "Advanced Energy Vehicle",
       "institution": "ohio-state-university",
+      "competencies": [
+        "systems-integration",
+        "electrical-engineering",
+        "controls-engineering",
+        "embedded-systems",
+        "engineering-project-management"
+      ],
       "description": "Multidisciplinary engineering project involving development and testing of an autonomous electric vehicle with emphasis on energy efficiency, system integration, iterative testing, and engineering design."
     },
     {
       "id": "rv-2sq-robotic-welding-attachment",
       "title": "RV-2SQ Robotic Welding Attachment",
+      "competencies": [
+        "robotics",
+        "industrial-automation",
+        "mechanical-design",
+        "engineering-fabrication"
+      ],
       "description": "Engineering project involving the design and development of a robotic welding attachment for a Mitsubishi RV-2SQ industrial robot."
     },
     {
       "id": "navigation-gps-ins-engineering",
       "title": "GPS/INS Navigation Engineering",
       "institution": "ohio-university",
+      "competencies": [
+        "navigation-systems",
+        "inertial-navigation",
+        "satellite-navigation",
+        "integrated-navigation",
+        "controls-engineering",
+        "embedded-systems"
+      ],
+      "software": [
+        "matlab",
+        "simulink"
+      ],
       "description": "Graduate engineering work involving satellite, inertial, and integrated navigation systems, including analysis and implementation of navigation concepts developed through graduate electrical engineering study."
     },
     {
       "id": "cpp-sensor-processing-ci",
       "title": "C++ Sensor Processing & Continuous Integration",
+      "competencies": [
+        "software-engineering",
+        "continuous-integration",
+        "sensor-systems",
+        "data-acquisition"
+      ],
+      "software": [
+        "cpp",
+        "git",
+        "gitlab",
+        "gitlab-ci-cd",
+        "platformio",
+        "unity-test-framework"
+      ],
       "description": "Personal software engineering project focused on a C++ sensor-processing application and a disciplined continuous-integration workflow. Placeholder for documentation of architecture, automated builds, unit testing, CI/CD, merge-request validation, artifacts, and failure-recovery testing."
     },
     {
       "id": "trading-card-cataloging-recognition-system",
       "title": "Trading Card Cataloging & Recognition System",
+      "competencies": [
+        "software-engineering",
+        "computer-vision"
+      ],
+      "software": [
+        "python",
+        "git",
+        "github",
+        "visual-studio-code"
+      ],
       "description": "Personal computer-vision and software-engineering project for automating the identification, classification, and cataloging of trading cards from images. Placeholder for the evolving recognition pipeline, dataset strategy, validation workflow, and application architecture."
     },
     {
       "id": "custom-aquarium-stand-sump-system",
       "title": "Custom Aquarium Stand & Sump System",
+      "competencies": [
+        "systems-integration",
+        "mechanical-design",
+        "cad-engineering-drafting",
+        "engineering-fabrication"
+      ],
+      "software": [
+        "fusion-360"
+      ],
       "description": "Personal engineering and fabrication project for a furniture-style aquarium stand and integrated sump system. Placeholder for structural design, CAD modeling, plumbing, water containment, serviceability, fabrication, and system-integration documentation."
     },
     {
       "id": "modular-circuit-handbook",
       "title": "The Modular Circuit Handbook",
+      "competencies": [
+        "electrical-engineering",
+        "electrical-design",
+        "circuit-analysis",
+        "analog-electronics",
+        "digital-electronics",
+        "engineering-documentation"
+      ],
+      "software": [
+        "kicad",
+        "git",
+        "github"
+      ],
       "description": "Long-form engineering reference project developing a practical circuit atlas for engineers and technical practitioners, supported by a structured library of reusable circuit schematics and engineering explanations."
     },
     {
       "id": "engineering-reference-website",
       "title": "Engineering Reference Website",
+      "competencies": [
+        "software-engineering",
+        "continuous-integration",
+        "engineering-documentation"
+      ],
+      "software": [
+        "git",
+        "github",
+        "visual-studio-code",
+        "nodejs",
+        "eleventy",
+        "nunjucks",
+        "html",
+        "css",
+        "javascript"
+      ],
       "description": "Development of a data-driven static engineering portfolio and knowledge base using Eleventy, structured canonical content, relationship validation, reusable layouts, and deterministic import tooling."
     }
   ]
