@@ -16,18 +16,110 @@ layout: base.njk
 <p><strong>Dates:</strong> {{ start }}{% if end %} – {{ end }}{% endif %}</p>
 {% endif %}
 
+{% if code %}
+<p><strong>Course Code:</strong> {{ code }}</p>
+{% endif %}
+
+{% if credits %}
+<p><strong>Credits:</strong> {{ credits }}</p>
+{% endif %}
+
+{% if term %}
+<p><strong>Term:</strong> {{ term }}</p>
+{% endif %}
+
 <hr>
 
 {{ content | safe }}
 
+
+{# ============================================================
+   DIRECT RELATIONSHIPS
+   ============================================================ #}
+
+
+{# Course -> Institution #}
+
+{% if entity == "course" and institution and collections.institutions %}
+
+<h2>Institution</h2>
+
+<ul>
+{% for institutionItem in collections.institutions %}
+    {% if institutionItem.data.id == institution %}
+        <li>
+            <a href="{{ institutionItem.url }}">
+                {{ institutionItem.data.title }}
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+{% endif %}
+
+
+{# Course -> Academic Credential(s) #}
+
+{% if entity == "course" and credentials and collections.credentials %}
+
+<h2>Academic Credential</h2>
+
+<ul>
+{% for credentialId in credentials %}
+    {% for credential in collections.credentials %}
+        {% if credential.data.id == credentialId %}
+            <li>
+                <a href="{{ credential.url }}">
+                    {{ credential.data.title }}
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</ul>
+
+{% endif %}
+
+
+{# Course -> Non-Degree Study #}
+
+{% if entity == "course" and study and collections.studies %}
+
+<h2>Academic Study</h2>
+
+<ul>
+{% for studyItem in collections.studies %}
+    {% if studyItem.data.id == study %}
+        <li>
+            <a href="{{ studyItem.url }}">
+                {{ studyItem.data.title }}
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+{% endif %}
+
+
+{# ============================================================
+   EXISTING GENERIC RELATIONSHIPS
+   ============================================================ #}
+
+
 {% if projects %}
+
 <h2>Projects</h2>
+
 <ul>
 {% for project in projects %}
     <li>{{ project }}</li>
 {% endfor %}
 </ul>
+
 {% endif %}
+
 
 {% if competencies and collections.competencies %}
 
@@ -38,7 +130,9 @@ layout: base.njk
     {% for competency in collections.competencies %}
         {% if competency.data.id == competencyId %}
             <li>
-                <a href="{{ competency.url }}">{{ competency.data.title }}</a>
+                <a href="{{ competency.url }}">
+                    {{ competency.data.title }}
+                </a>
             </li>
         {% endif %}
     {% endfor %}
@@ -47,23 +141,39 @@ layout: base.njk
 
 {% endif %}
 
+
 {% if software %}
+
 <h2>Software</h2>
+
 <ul>
 {% for item in software %}
     <li>{{ item }}</li>
 {% endfor %}
 </ul>
+
 {% endif %}
 
+
 {% if standards %}
+
 <h2>Standards</h2>
+
 <ul>
 {% for standard in standards %}
     <li>{{ standard }}</li>
 {% endfor %}
 </ul>
+
 {% endif %}
+
+
+{# ============================================================
+   EMPLOYMENT RELATIONSHIPS
+   ============================================================ #}
+
+
+{# Employer -> Positions #}
 
 {% if entity == "employer" and collections.positions %}
 
@@ -73,13 +183,18 @@ layout: base.njk
 {% for position in collections.positions %}
     {% if position.data.employer == id %}
         <li>
-            <a href="{{ position.url }}">{{ position.data.title }}</a>
+            <a href="{{ position.url }}">
+                {{ position.data.title }}
+            </a>
         </li>
     {% endif %}
 {% endfor %}
 </ul>
 
 {% endif %}
+
+
+{# Position -> Projects #}
 
 {% if entity == "position" and collections.projects %}
 
@@ -89,13 +204,18 @@ layout: base.njk
 {% for project in collections.projects %}
     {% if project.data.position == id %}
         <li>
-            <a href="{{ project.url }}">{{ project.data.title }}</a>
+            <a href="{{ project.url }}">
+                {{ project.data.title }}
+            </a>
         </li>
     {% endif %}
 {% endfor %}
 </ul>
 
 {% endif %}
+
+
+{# Competency -> Projects #}
 
 {% if entity == "competency" and collections.projects %}
 
@@ -105,7 +225,110 @@ layout: base.njk
 {% for project in collections.projects %}
     {% if project.data.competencies and id in project.data.competencies %}
         <li>
-            <a href="{{ project.url }}">{{ project.data.title }}</a>
+            <a href="{{ project.url }}">
+                {{ project.data.title }}
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+{% endif %}
+
+
+{# ============================================================
+   ACADEMIC RELATIONSHIPS
+   ============================================================ #}
+
+
+{# Institution -> Academic Credentials #}
+
+{% if entity == "institution" and collections.credentials %}
+
+<h2>Academic Credentials</h2>
+
+<ul>
+{% for credential in collections.credentials %}
+    {% if credential.data.institution == id %}
+        <li>
+            <a href="{{ credential.url }}">
+                {{ credential.data.title }}
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+{% endif %}
+
+
+{# Institution -> Non-Degree Studies #}
+
+{% if entity == "institution" and collections.studies %}
+
+<h2>Non-Degree Studies</h2>
+
+<ul>
+{% for studyItem in collections.studies %}
+    {% if studyItem.data.institution == id %}
+        <li>
+            <a href="{{ studyItem.url }}">
+                {{ studyItem.data.title }}
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+{% endif %}
+
+
+{# Academic Credential -> Coursework #}
+
+{% if entity == "credential" and collections.coursework %}
+
+<h2>Coursework</h2>
+
+<ul>
+{% for course in collections.coursework %}
+    {% if course.data.credentials and id in course.data.credentials %}
+        <li>
+            <a href="{{ course.url }}">
+                {% if course.data.code %}
+                    {{ course.data.code }} —
+                {% endif %}
+                {{ course.data.title }}
+            </a>
+            {% if course.data.term %}
+                ({{ course.data.term }})
+            {% endif %}
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+{% endif %}
+
+
+{# Non-Degree Study -> Coursework #}
+
+{% if entity == "study" and collections.coursework %}
+
+<h2>Coursework</h2>
+
+<ul>
+{% for course in collections.coursework %}
+    {% if course.data.study == id %}
+        <li>
+            <a href="{{ course.url }}">
+                {% if course.data.code %}
+                    {{ course.data.code }} —
+                {% endif %}
+                {{ course.data.title }}
+            </a>
+            {% if course.data.term %}
+                ({{ course.data.term }})
+            {% endif %}
         </li>
     {% endif %}
 {% endfor %}
