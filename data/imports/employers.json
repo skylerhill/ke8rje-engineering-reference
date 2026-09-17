@@ -1,0 +1,16 @@
+{
+  "collection": "employers",
+  "entity": "employer",
+  "items": [
+    {
+      "id": "ohio-state-university",
+      "title": "The Ohio State University",
+      "location": "Columbus, Ohio"
+    },
+    {
+      "id": "amg-vanadium",
+      "title": "AMG Vanadium",
+      "location": "Cambridge, Ohio"
+    }
+  ]
+}

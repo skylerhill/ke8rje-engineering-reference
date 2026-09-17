@@ -1,0 +1,59 @@
+{
+  "collection": "positions",
+  "entity": "position",
+  "items": [
+    {
+      "id": "ohio-state-university-student-tech-support-specialist",
+      "title": "Student Tech Support Specialist",
+      "employer": "ohio-state-university",
+      "location": "Columbus, Ohio",
+      "start": "2013-08",
+      "end": "2014-05",
+      "description": "Provided technical support for university customers, including hardware, software, and account troubleshooting; installation and configuration; and technical documentation."
+    },
+    {
+      "id": "amg-vanadium-drafting-technician-intern",
+      "title": "Drafting Technician Intern",
+      "employer": "amg-vanadium",
+      "location": "Cambridge, Ohio",
+      "start": "2014-10",
+      "end": "2015-03",
+      "description": "Supported engineering and manufacturing through CAD drawings and models, technical documentation, engineering changes, and configuration-related work."
+    },
+    {
+      "id": "zane-state-college-adjunct-faculty",
+      "title": "Adjunct Faculty",
+      "employer": "zane-state-college",
+      "location": "Zanesville, Ohio",
+      "start": "2015-06",
+      "end": "2019-08",
+      "description": "Taught engineering technology coursework and laboratories as adjunct faculty."
+    },
+    {
+      "id": "zane-state-college-instructor",
+      "title": "Instructor",
+      "employer": "zane-state-college",
+      "location": "Zanesville, Ohio",
+      "start": "2019-08",
+      "end": "2022-08",
+      "description": "Served as a full-time engineering technology instructor, teaching technical coursework and laboratories and supporting student development."
+    },
+    {
+      "id": "zane-state-college-assistant-professor-program-director",
+      "title": "Assistant Professor / Program Director",
+      "employer": "zane-state-college",
+      "location": "Zanesville, Ohio",
+      "start": "2022-08",
+      "end": "2023-06",
+      "description": "Led engineering technology program activities including curriculum development, laboratory operations, budgeting, continuous improvement, teaching, industry collaboration, student mentoring, accreditation support, and program assessment."
+    },
+    {
+      "id": "boeing-systems-engineer",
+      "title": "Systems Engineer",
+      "employer": "boeing",
+      "location": "Heath, Ohio",
+      "start": "2023-06",
+      "description": "Supports modernization of mission-critical electrical test equipment used to verify guidance and control systems, with work spanning requirements, electrical design, reverse engineering, systems integration, verification and validation, model-based systems engineering, and multidisciplinary coordination."
+    }
+  ]
+}
