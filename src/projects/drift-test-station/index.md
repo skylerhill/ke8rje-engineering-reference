@@ -24,7 +24,12 @@ software:
   - cameo-systems-modeler
   - ni-daq
 standards:
+  - mil-std-889
+  - mil-std-810
   - mil-std-461
+  - mil-std-130
+  - nas-411-1
+  - mil-hdbk-808
   - nfpa-70
   - nfpa-79
 ---
